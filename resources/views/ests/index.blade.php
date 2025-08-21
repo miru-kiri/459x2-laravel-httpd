@@ -15,7 +15,7 @@
             </div>
          </div>
       </header>
-      <div class="kirino">テスト！</div>
+      <div class="kirino">テスト！おおお</div>
       <section>
          <div class="est_top">
             <img src="{{ asset('img/esthe_top_image.jpg') }}" alt="メンズエステランドトップ画像" class="top-img">
