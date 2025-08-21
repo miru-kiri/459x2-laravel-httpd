@@ -1,0 +1,249 @@
+#full-overlay{
+  position: fixed;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(250, 249, 249, 0.835);
+  display: none;
+  z-index: 999;
+}
+#full-overlay .inner{
+  position: fixed;
+  left: 50%; top: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.top_img{
+  height: 300px;
+}
+.top_img_text{
+  font-size: 1.2rem;
+  color:white;
+}
+.underage_title {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+.underage_yes_btn {
+  width: 80%;
+  background-color: #261817;
+  border-radius: 0.6rem;
+}
+.underage_yes_btn span {
+  color: white;
+  font-weight: bold;
+}
+.underage_no_btn {
+  width: 80%;
+  border: 1px solid #261817;
+  border-radius: 0.6rem;
+}
+.underage_no_btn span {
+  font-weight: bold;
+}
+.genre-card-title {
+  color: white; 
+  font-weight:bold;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+.genre-card-triangle {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 0;
+  height: 0;
+  border-top: 35px solid white; 
+  border-right: 35px solid transparent;
+}
+.guidance {
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  font-weight: bold;
+  border: solid 1px #000000;
+}
+.guidance-content {
+  font-size: 0.8rem;
+  font-weight: lighter;
+}
+.news-title {
+  font-weight: bold;
+  font-size: 3rem;
+  color: #CCCCCC;
+}
+.news-table{
+   border-spacing: 0;
+   border-collapse: collapse;
+   word-break: break-all;
+   word-wrap: break-word;
+   table-layout: fixed;
+}
+@media (max-width: 768px){
+   .news-table{
+       width:100%;
+   }
+   .news-table td{
+      display: block;
+      text-align: left;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+   }
+}
+.news-scroll {
+  display: flex;
+  margin: 0 auto;
+  width: 80%;/*スクロールの高さ*/
+  height: 130px;/*スクロールの高さ*/
+	overflow-y: scroll;
+}
+.guidance {
+  /* display: flex; */
+  margin: 2rem auto;
+  width: 80%;/*スクロールの高さ*/
+}
+.banner {
+  width: 50%;
+}
+.blog-content {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; /* 任意の行数を指定 */
+}
+.triangle-number-1 {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 60px solid #F7BD2D;
+  border-right: 60px solid transparent;
+}
+.triangle-number-2 {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 60px solid #98A0B3; 
+  border-right: 60px solid transparent;
+}
+.triangle-number-3 {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 60px solid #BC7259; 
+  border-right: 60px solid transparent;
+}
+.triangle-number-4 {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 60px solid #805022; 
+  border-right: 60px solid transparent;
+}
+.triangle-number-5 {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 60px solid #805022; 
+  border-right: 60px solid transparent;
+}
+.triangle-number-6 {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 60px solid #805022; 
+  border-right: 60px solid transparent;
+}
+.triangle-number-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 5px;
+  background-color: transparent;
+  color: white; /* タイトルの文字色を設定 */
+  font-weight: bold;
+}
+.triangle-number-small-text {
+  font-size: 0.7rem;
+}
+
+.shop_info_pc {
+  display: block;
+}
+
+.shop_info_sp {
+  display: none;
+}
+.blog_card {
+  text-decoration: none;
+}
+/* .cast_pc {
+  display: block;
+} */
+
+.cast_sp {
+  display: none;
+}
+
+.cast_schedule_sp {
+  display: none;
+}
+
+.stay-status-img {
+  width: 45px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.site-map-area {
+  height:400px;
+  width:100%;
+}
+.top_banner {
+  width: 50%;
+}
+/* スマートフォンサイズ時のメディアクエリ */
+@media (max-width: 1400px) {
+  .cast_pc {
+    display: none !important;
+  }
+  .cast_sp {
+    display: block !important;
+  }
+  .site-map-area {
+    height: 200px;    
+  }
+}
+/* スマートフォンサイズ時のメディアクエリ */
+@media (max-width: 768px) {
+  .shop_info_pc {
+    display: none;
+  }
+  .shop_info_sp {
+    display: block;
+  }
+  .cast_schedule_pc {
+    display: none !important;
+  }
+  .cast_schedule_sp {
+    display: initial;
+  }
+  .top_img{
+    height: 150px;
+  }
+  .top_img_text{
+    font-size: 1rem;
+    color:white;
+  }
+  .top_img_text_area{
+    padding: 0.8rem 0.8rem;
+  }
+  .top_banner {
+    width: 90%;
+  }
+}
+/*-----shoppage 求人タブの色変更----*/
+a.btn[href*="tab_id=9"] ,a.btn[href*="tab_id=18"],a.btn[href*="tab_id=27"],
+a.btn[href*="tab_id=36"],a.btn[href*="tab_id=42"],a.btn[href*="tab_id=48"],
+a.btn[href*="tab_id=63"]{
+  border:1px solid #e86085; 
+}

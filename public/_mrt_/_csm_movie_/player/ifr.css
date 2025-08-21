@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+body{
+   margin: 0px;
+   padding: 0px;
+}
+
+.mrt_brw_new_mess_div{
+   font-size: 9px;
+   color: #999999;
+   margin: 0px 0px 0px 0px;
+   padding: 0px 0px 0px 0px;
+}

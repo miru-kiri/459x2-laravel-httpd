@@ -1,0 +1,449 @@
+section{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+main{
+    padding: 0;/*miru_topで効いている*/
+}
+a{
+    text-decoration: none;
+}
+img{
+    width: 200px;
+}
+.flex{
+    display: flex;
+}
+.est_top{
+    position: relative;
+    overflow: hidden;
+    height: 250px; /* 任意：ズーム表示したい高さ */
+}
+.est_top img{
+    /*
+    width: 100%;
+    height: auto;
+    */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    height: 100%;
+    min-width: 100%; /* 画面が細いときも左右が切れないように */
+    object-fit: cover;
+}
+.est_search{
+    display: flex;
+    border-bottom: 2px solid #00a29a;
+    align-items: center;
+}
+.est_search_img{
+    width: 25px;
+}
+.est_search_img img{
+    width: 100%;
+}
+.est_search_ttl{
+    font-size: 16px;
+}
+@media (min-width:786px){
+    .est_search_img{
+        width: 50px;
+    }
+    .est_search_ttl{
+        font-size: 20px;
+    }
+
+}
+.est_area_sec{
+    display: flex;
+    justify-content: space-around;
+}
+.est_area_sec a{
+    text-decoration: none;
+    margin-top: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    width: 100px;
+    text-align: center;
+}
+.est_area_sec p{
+    padding: 20px 0;
+    color:#00a29a;
+    font-size: 17px;
+    margin: 0;
+}
+@media (min-width : 786px){
+    .est_area_sec a{
+        text-decoration: none;
+        margin-top: 20px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        width: 250px;
+        text-align: center;
+    }
+    .est_area_sec p{
+        padding: 20px 0;
+        color:#00a29a;
+        font-size: 30px;
+        margin: 0;
+    }
+}
+.est_news_ttl{
+    border-bottom: 2px solid #00a29a;
+}
+.est_news_list{
+    padding: 20px;
+}
+.est_news_item{
+    box-shadow: 0 2px 4px rgba(0,0,6,0.3);
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 15px;
+}
+.est_news_item a{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    justify-content: space-between;
+}
+.est_news_item img{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-left: 20px;
+    border-radius: 15px;
+}
+.est_shop_list{
+    padding: 20px;
+}
+.est_shop_item a{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    justify-content: space-around;
+    box-shadow: 0 0px 6px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    padding: 10px;
+}
+.est_shop_item img{
+    width: 50%;
+    max-width: 300px;
+    object-fit: cover;
+    margin-right: 20px;
+    border-radius: 15px;
+}
+.est_shop_text{
+    width: 50%;
+}
+.est_shop_text h4{
+    margin: 0;
+    padding: 5px 0;
+    color: #231815;
+    font-size: 12px;
+    line-height: 15px;
+}
+.est_shop_text p{
+    margin: 0;
+    padding: 5px 0;
+    color: #231815;
+    font-size: 12px;
+    line-height: 15px;
+}
+@media (min-width: 768px){
+    .est_shop_item img{
+        max-width: 350px;
+    }
+    .est_shop_text{
+        width: 50%;
+        text-align: center;
+    }
+    .est_shop_text h4{
+        margin: 0;
+        padding: 5px 0;
+        color: #231815;
+        font-size: 34px;
+        line-height: 60px;
+    }
+    .est_shop_text p{
+        margin: 0;
+        padding: 5px 0;
+        color: #231815;
+        font-size: 21px;
+        line-height: 20px;
+    }
+
+}
+.est_copyright{
+    text-align: center;
+    padding: 20px;
+    background-color: #bedfe9;
+    margin-bottom: 150px;/*見やすくするため、試験的に入れてます*/
+}
+.est_copyright h2{
+    color: #00a29a;
+}
+.est_copyright p{
+    color:#231815;
+    font-size:16px;
+}
+/*-------エリアのスタイル-------*/
+.area_serect{
+    display: flex;
+    justify-content: space-around;
+    background-color: #00a29a;
+}
+.area_serect a{
+    background-color: #33d6ce;
+    border-radius: 30px;
+    width: 100px;
+    margin: 10px auto;
+    text-align: center;
+}
+.area_serect a p{
+    color:#fff;
+    font-size: 17px;
+    font-weight: bold;
+    margin: 0;
+    padding: 10px 0;
+}
+/*----選ばれてるエリア色変え----*/
+.atr{
+    background-color: #fff !important; 
+}
+.atr p{
+    color:#0f3eda !important;
+}
+.est_area h2{
+    font-size: 20px;
+    border-bottom: 1px solid #00a29a;
+}
+.est_tenp{
+    margin: 80px 0;
+    padding: 20px;
+    box-shadow: 0 0px 6px rgba(0, 0, 0, 0.3);
+}
+.est_tenp_info{
+    text-align: center;
+    font-size: 19px;
+    font-weight: bold;
+}
+.est_tenp_name{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.est_tenp_name_img{
+    width: 50%;
+}
+.est_tenp_name_img img{
+    width: 100%;
+    max-width: 330px;
+}
+.est_tenp_name_text{
+    padding: 10px;
+}
+.est_tenp_name_text h3{
+    color: #231815;
+    font-size: 24px;
+}
+.est_tenp_name_text p{
+    color:#231815
+}
+.est_tenp_cast {
+  display: inline-flex;        /* 横並びにして高さは中身に合わせる */
+  overflow-x: auto;            /* 横スクロールのみ許可 */
+  overflow-y: hidden;          /* 縦スクロール無効 */
+  width: 100%;             /* 幅を画面に収める */
+  border: 1px solid #ccc;
+  gap: 10px;                   /* 子要素の間隔 */
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.est_tenp_cast_today {
+  min-width: 100px;
+  padding: 20px;
+  flex-shrink: 0;              /* 縮まないように */
+  box-shadow: 0 0px 6px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+}
+.est_tenp_cast_today img{
+    width: 120px;
+    height: 180px;
+    
+}
+/*-----area_cast一覧--------*/
+.cast{
+    max-width: 1200px;
+    width: 100%;
+    margin: 10px auto;
+}
+.cast_list{
+    display: flex;
+    column-gap: 20px;
+}
+.cast_item{
+    width: 200px;
+    height:auto;
+    border: 2px solid #222;
+}
+.cast_item img{
+    width: 100%;
+}
+/*-----shop_top css------*/
+.shop_sec{
+    margin-bottom: 50px;
+}
+.shop_img{
+    width: 100%;
+    text-align: center;
+}
+.shop_img img{
+    width: 100%;
+    max-width: 250px;
+}
+.shop_tag{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    background-color: #e0e3e6;
+    margin: 20px 0;
+    padding: 15px 0;
+}
+.shop_tag span{
+    color: #000;
+    font-size: 19px;
+    font-weight: bold;
+}
+.shop_detail{
+    width: 100%;
+    padding: 20px;
+    position: relative;
+    box-shadow: 0 0px 6px rgba(0, 0, 0, 0.3);
+}
+.shop_detail h2{
+    font-size: 26px;
+    font-weight: bold;
+    color: #000;
+}
+.shop_detail p{
+    font-size: 18px;
+    color: #222;
+    margin: 0;
+}
+.shop_detail_map{
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+}
+.shop_detail_map a{
+    display: flex;
+    justify-content: space-around;
+    column-gap: 10px;
+    width: 100%;
+    height: 100%;
+    color: unset;
+}
+.shop_detail_map p{
+    color: #fff;
+    font-weight: bold;
+}
+.shop_cnt_ttl{
+    padding: 15px;
+}
+.shop_cnt_sbttl{
+    padding: 15px;
+    font-size: 18px;
+
+}
+.shop_cast_box{
+    display: inline-flex;        /* 横並びにして高さは中身に合わせる */
+    overflow-x: auto;            /* 横スクロールのみ許可 */
+    overflow-y: hidden;          /* 縦スクロール無効 */
+    max-width: 100%;             /* 幅を画面に収める */
+    border: 1px solid #ccc;
+    gap: 10px;                   /* 子要素の間隔 */
+    padding: 20px;
+    column-gap: 10px;
+    box-sizing: border-box;
+}
+.shop_cast_blog{
+    display: inline-flex;        /* 横並びにして高さは中身に合わせる */
+    overflow-x: auto;            /* 横スクロールのみ許可 */
+    overflow-y: hidden;          /* 縦スクロール無効 */
+    max-width: 100%;             /* 幅を画面に収める */
+    border: 1px solid #ccc;
+    gap: 10px;                   /* 子要素の間隔 */
+    padding: 20px;
+    column-gap: 10px;
+    box-sizing: border-box;
+    align-items: end;
+}
+.shop_cast_blog_img{
+    width: 200px;
+    height: 300px;
+    overflow: hidden;
+}
+.shop_cast_blog_img img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.shop_news{
+    text-align: left;
+}
+.shop_news_ttl{
+    padding: 15px;
+
+}
+.shop_news_text{
+    padding: 15px;
+}
+/*-----shop_tab_page------*/
+.shop_cast_list{
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 20px;
+}
+.shop_cast_item{
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    border: 2px solid #222;
+    margin-bottom: 30px;
+}
+.shop_cast_item img{
+    width: 100%;
+}
+.shop_cast_item p{
+    font-size: 20px;
+}
+
+/*-----キャストブログ------*/
+.shop_cas_blog{                 /*--タブのキャストブログCSS--*/
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    column-gap: 20px;
+    justify-content: space-around;
+}
+.cas_blog_box{    /*ブログ１つ１つの箱*/
+    margin-bottom: 20px;
+    /*box-shadow: 0 0px 6px rgba(0, 0, 0, 0.3);*/
+
+}
+.cas_name{   /*ブログのキャストネーム*/
+    color:#333;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.blog_ttl{    /*ブログタイトル*/
+    margin-bottom: 10px;
+    font-size: 19px;
+}
+.blog_uptime{
+    color: #000;
+}

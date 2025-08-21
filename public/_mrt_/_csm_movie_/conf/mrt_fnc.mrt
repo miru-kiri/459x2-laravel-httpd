@@ -1,0 +1,1081 @@
+<?php
+//////////////////////////////////////////////////////////////////////////////////
+//
+//    function郡 色々つかえそうなシリーズ   By MRT   frontendexe@yahoo.co.jp
+//    初版2012/03/14ころ php5以上推奨
+//////////////////////////////////////////////////////////////////////////////////
+//共通設定項目
+
+/////////////////////////////半角数字のみかチェックだよーーーーーん///////////////
+function mrt_fnc_suzinomi ($suzinomi_text) { 
+   mb_regex_encoding('UTF-8');
+   if(preg_match('/^[0-9]+$/u',$suzinomi_text)){
+        return TRUE;//半角数字しか含まれない
+   } else {
+        return FALSE;
+   }
+}
+/////////////////////////////有効な日付かチェックだよーーーーーん///////////////
+function mrt_fnc_chkdate ($ty = "", $tm = "", $td = "") { 
+   if(checkdate($tm, $td, $ty)){
+        return TRUE; //有効な日付じゃ
+   } else {
+        return FALSE;
+   }
+}
+////////////////////////////電話番号チェック///////////////////////
+function mrt_fnc_tel_chk ($tel_chk_text) {
+   mb_regex_encoding('UTF-8');
+   if(preg_match('/^[0-9-]+$/u',$tel_chk_text)){
+        return TRUE;//半角数字と半角ハイフンしか含まれない
+   } else {
+        return FALSE;
+   }
+}
+/////////////////mb_convert_kana半角全角変換/////////////////////////////////////////////////////////
+function mrt_fnc_zenhan_henkan($nihongo_text = "") { 
+   mb_regex_encoding('UTF-8');
+   //a 全英数字→半英数字 A 半英数字→全英数字
+  $mrt_henkan_moji = mb_convert_kana($nihongo_text,'a','utf-8'); //
+  $mrt_henkan_moji = str_replace('ー', '-', $mrt_henkan_moji);
+  $mrt_henkan_moji = str_replace('／', '/', $mrt_henkan_moji);
+  return $mrt_henkan_moji;
+}
+/////////////////スペース空白mb_convert_kana半角全角変換//////////////////////////////////////////////////////
+function mrt_fnc_zenkuhaku_henkan($nihongo_text = "") { 
+   //s 全角空白→半角空白 S 半角空白→全角空白
+  $mrt_henkan_moji = mb_convert_kana($nihongo_text,'s','utf-8'); //
+  //$str = preg_replace("/^[　]+/u","",$str);
+  return $mrt_henkan_moji;
+}
+/////////////////スペース空白半角除去//////////////////////////////////////////////////////
+function mrt_fnc_kuhaku_nokeru($nihongo_text = "") { 
+   //半角のスペース除去
+  $mrt_noketa_moji = str_replace(" ","", $nihongo_text);
+  return $mrt_noketa_moji;
+}
+/////////////////スペース空白全角半角除去//////////////////////////////////////////////////////
+function mrt_fnc_all_kuhaku_nokeru($nihongo_text = "") { 
+   //半角のスペース除去
+  $mrt_noketa_moji = str_replace(" ","", $nihongo_text);
+  $mrt_noketa_moji = str_replace("　","", $mrt_noketa_moji);
+  return $mrt_noketa_moji;
+}
+/////////////////文字置き換え//////////////////////////////////////////////////////
+function mrt_fnc_mojiokikae($nihongo_text = "", $okikaetai = '', $okikaeru = '') { 
+   //
+  $mrt_okikaeta_moji = str_replace($okikaetai, $okikaeru, $nihongo_text);
+  return $mrt_okikaeta_moji;
+}
+///////////////////////////////////////////////////日本語が含まれるかチェック/////////////////////////////////
+function mrt_fnc_nihongo($nihongo_text) { 
+   if(ereg("[^ -~]",$nihongo_text)){
+      return TRUE;//含まれる
+   } else {
+      return FALSE;
+   }
+}
+///////////////////文字数チェック（全角半角関係なしの一文字///////////////////////////////
+function mrt_fnc_mozisu($mozisu = "",$nagasa_syou = "",$nagasa_dai = "") { 
+   if(mb_strlen($mozisu,'utf-8') >= $nagasa_syou && mb_strlen($mozisu,'utf-8') <= $nagasa_dai ) { //文字数チェック
+      return true;
+   } else { 
+      return false;
+   }
+}
+///////////////////文字数チェック（全角半角別々のバイト数//////////////////////////////////
+function mrt_fnc_mozisu_bit($mozi = "",$nagasa_syou = "",$nagasa_dai = "") { 
+   //全角2バイト半角1バイト
+   if(strlen($mozi) >= $nagasa_syou && strlen($mozi) <= $nagasa_dai ) { //バイト数チェック
+      return true;
+   } else { 
+      return false;
+   }
+}
+///////////////////////////////////////////////////英数のみで記号含むか？チェック//////////////////////////////
+function mrt_fnc_eisunomi($eisu_text) { //記号が含まれるかチェック
+   mb_regex_encoding('UTF-8');
+      if(preg_match('/^[a-z0-9_-]+$/u', $eisu_text)) {
+          return TRUE;
+      } else {
+          return FALSE;
+      }
+}
+///////////////////////////////パスワード系チェック英数のみで記号含むか？チェック//////////////////////////////
+function mrt_fnc_passw_chk($pass_text) { //パスワードチェック
+   mb_regex_encoding('UTF-8');
+      if(preg_match('/^[a-z0-9]+$/u', $pass_text)) {
+          return TRUE;
+      } else {
+          return FALSE;
+      }
+}
+///////////////////////////////日付系の文字種チェック”/”//////////////////////////////
+function mrt_fnc_datekei_chk($hiduke_text) {
+   mb_regex_encoding('UTF-8');
+      if(preg_match('/^[0-9\/]+$/u', $hiduke_text)) {
+          return TRUE;
+      } else {
+          return FALSE;
+      }
+}
+///////////////////////////////////////////////////記号含むか？チェック//////////////////////////////
+function mrt_fnc_kigoudame($text) { //記号が含まれるかチェック
+   mb_regex_encoding('UTF-8');
+      if(preg_match('/[^a-zA-Z0-9ぁ-ん一-龠ァ-ヴー]+/u', $text)) {
+          return TRUE;
+      } else {
+          return FALSE;
+      }
+}
+///////////////////////////////////////////////////源氏名などにチェック//////////////////////////////
+function mrt_fnc_name_damy_chk($text) { //含まれるかチェック
+   mb_regex_encoding('UTF-8');
+      if(preg_match('/[^a-zA-Zａ-ｚＡ-Ｚ0-9ぁ-ん一-龠ァ-ヴー\s　\[\]「」【】『』（）\(\)\-\|\/・]+/u', $text)) {
+          return TRUE;
+      } else {
+          return FALSE;
+      }
+}
+///////////////////////////////////////////////////ひらがなのみか？チェック//////////////////////////////
+function mrt_fnc_hiragananomi($text) { //ひらがなのみかチェック
+   mb_regex_encoding('UTF-8');
+      if(preg_match('/^[ぁ-ん]+$/u', $text)) {
+          return TRUE;
+      } else {
+          return FALSE;
+      }
+}
+///////////////////////////////////////////////////カタカナのみか？チェック//////////////////////////////
+function mrt_fnc_katakananomi($text) { //カタカナのみかチェック
+   mb_regex_encoding('UTF-8');
+      if(preg_match('/^[ァ-ヴー（()）]+$/u', $text)) {
+          return TRUE;
+      } else {
+          return FALSE;
+      }
+}
+/////////////////////////////////////////////単語検索(含まれる)///////////////////////////////
+function mrt_fnc_tango_chk ($kotoba = "", $tango = ""){
+   mb_regex_encoding('UTF-8');
+      if(preg_match("/{$tango}/u", $kotoba)) {
+          return TRUE;
+      } else {
+          return FALSE;
+      }
+}
+///////////////////////////////////////////////////英数のみでドメイン名チェック//////////////////////////////
+function mrt_fnc_domain_chk($eisu_text) { //記号が含まれるかチェック
+   mb_regex_encoding('UTF-8');
+      if(preg_match('/^[a-z0-9_.-]+$/u', $eisu_text)) {
+          return TRUE;
+      } else {
+          return FALSE;
+      }
+}
+///////////////////////////////////////////////////英数のみでＵＲＬに使われる文字種チェック//////////////////////////////
+function mrt_fnc_any_url_chk($eisu_text) {
+   mb_regex_encoding('UTF-8');
+      if(preg_match('/^[a-zA-Z0-9_.-:&;\=\/@]+$/u', $eisu_text)) {
+          return TRUE;
+      } else {
+          return FALSE;
+      }
+}
+///////////////////////////////////////////////////メールアドレスチェック//////////////////////////////
+function mrt_fnc_mail_chk($eisu_text) { 
+   mb_regex_encoding('UTF-8');
+      if(preg_match('/^[-+.\\w]+@[-a-z0-9]+(\\.[-a-z0-9]+)*\\.[a-z]{2,6}$/i', $eisu_text)) {
+          return TRUE;
+      } else {
+          return FALSE;
+      }
+}
+///////////////////////////////////////////////////郵便番号チェック//////////////////////////////
+function mrt_fnc_yubin_chk($yubin_text) { 
+   mb_regex_encoding('UTF-8');
+      if(preg_match("/^\d{3}\-\d{4}$/", $yubin_text)) {
+          return TRUE;
+      } else {
+          return FALSE;
+      }
+}
+//////////////////arrayなら何でもセレクトメニュー吐き出し//////////////////
+function mrt_fnc_ary_select($ary_list = "", $sentaku_key = "", $select_name = "", $cls_name = "") { 
+   if($cls_name == ""){
+      $cls_name = "no_name";
+   }
+   if($select_name == "") { 
+      $haku = "\n<select name=\"no_name\" class=\"".$cls_name."\">\n";
+   } else { 
+      $haku = "\n<select name=\"".$select_name."\" class=\"".$cls_name."\">\n";
+   }
+   if(!is_array($ary_list)){$ary_list = array();}
+      foreach ($ary_list as $ary_key => $ary_val) {
+         if ($ary_key == $sentaku_key) { //選択されたのが見つかった場合
+            $mituketa = " selected=\"selected\"";
+         } else {//悲しくも見つからなかった場合
+            $mituketa = '';
+         }//1セットづつはきだし
+            $haku .= "<option value=\"{$ary_key}\"{$mituketa}>{$ary_val}</option>\n";
+      }//吐き出し終了
+   $haku .= "</select>\n";
+   return $haku;
+}
+//////////////////件数セレクトメニュー吐き出し//////////////////
+function mrt_fnc_nanken($kensu_sentaku = "",$kensu_id = "") { 
+   $kensu_list = array(
+   '5'=>'5','10'=>'10','15'=>'15','20'=>'20','25'=>'25','30'=>'30','35'=>'35',
+   '40'=>'40','45'=>'45','50'=>'50','100'=>'100'
+   );
+   if($kensu_id == "") { 
+      $haku = "\n<select name=\"kensu\">\n";
+   } else { 
+      $haku = "\n<select name=\"kensu".$kensu_id."\">\n";
+   }
+      foreach ($kensu_list as $kensuval => $kensudayo) {
+         if ($kensudayo == $kensu_sentaku) { //選択されたのが見つかった場合
+            $mituketa = " selected=\"selected\"";
+         } else {//悲しくも見つからなかった場合
+            $mituketa = '';
+         }//1セットづつはきだし
+            $haku .= "<option value=\"{$kensuval}\"{$mituketa}>{$kensudayo}</option>\n";
+      }//吐き出し終了
+   $haku .= "</select>件\n";
+   return $haku;
+}
+//////////////////年セレクトメニュー吐き出し//////////////////
+function mrt_fnc_nannen($nen_sentaku = "",$nen_id = "") { 
+   $nen_list = array(
+   '2010'=>'2010','2011'=>'2011','2012'=>'2012','2013'=>'2013','2014'=>'2014',
+   '2015'=>'2015','2016'=>'2016','2017'=>'2017','2018'=>'2018','2019'=>'2019',
+   '2020'=>'2020','2021'=>'2021','2022'=>'2022'
+   );
+   if($nen_id == "") { 
+      $haku = "\n<select name=\"nen\">\n";
+   } else { 
+      $haku = "\n<select name=\"nen".$nen_id."\">\n";
+   }
+      foreach ($nen_list as $nenval => $nendayo) {
+         if ($nendayo == $nen_sentaku) { //選択されたのが見つかった場合
+            $mituketa = " selected=\"selected\"";
+         } else {//悲しくも見つからなかった場合
+            $mituketa = '';
+         }//1セットづつはきだし
+            $haku .= "<option value=\"$nenval\"$mituketa>$nendayo</option>\n";
+      }//吐き出し終了
+   $haku .= "</select>年\n";
+   return $haku;
+}
+//////////////////月セレクトメニュー吐き出し//////////////////
+function mrt_fnc_nangatu($tuki_sentaku = "",$tuki_id = "") { 
+   $tuki_list = array(
+'01'=>'01','02'=>'02','03'=>'03','04'=>'04','05'=>'05','06'=>'06','07'=>'07','08'=>'08','09'=>'09','10'=>'10',
+'11'=>'11','12'=>'12'
+   );
+   if($tuki_id == "") { 
+      $haku = "\n<select name=\"tuki\">\n";
+   } else { 
+      $haku = "\n<select name=\"".$tuki_id."\">\n";
+   }
+      foreach ($tuki_list as $tukival => $tukidayo) {
+         if ($tukidayo == $tuki_sentaku) { //選択されたのが見つかった場合
+            $mituketa = " selected=\"selected\"";
+         } else {//悲しくも見つからなかった場合
+            $mituketa = '';
+         }//1セットづつはきだし
+            $haku .= "<option value=\"$tukival\"$mituketa>$tukidayo</option>\n";
+      }//吐き出し終了
+   $haku .= "</select>月\n";
+   return $haku;
+}
+//////////////////日セレクトメニュー吐き出し////////////////////////////////
+function mrt_fnc_nanniti ($day_sentaku = "",$day_id = "") { 
+   $day_list = array(
+   '01'=>'01','02'=>'02','03'=>'03','04'=>'04','05'=>'05','06'=>'06','07'=>'07','08'=>'08','09'=>'09','10'=>'10',
+   '11'=>'11','12'=>'12','13'=>'13','14'=>'14','15'=>'15','16'=>'16','17'=>'17','18'=>'18','19'=>'19','20'=>'20',
+   '21'=>'21','22'=>'22','23'=>'23','24'=>'24','25'=>'25','26'=>'26','27'=>'27','28'=>'28','29'=>'29','30'=>'30',
+   '31'=>'31'
+   );
+   if($day_id == "") { 
+      $haku = "\n<select name=\"day\">\n";
+   } else { 
+      $haku = "\n<select name=\"".$day_id."\">\n";
+   }
+   foreach ($day_list as $dayval => $daydayo) {
+      if ($daydayo == $day_sentaku) { //選択されたのが見つかった場合
+         $mituketa = " selected=\"selected\"";
+      } else {//悲しくも見つからなかった場合
+         $mituketa = '';
+      }//1セットづつはきだし
+         $haku .= "<option value=\"$dayval\"$mituketa>$daydayo</option>\n";
+   }//吐き出し終了
+   $haku .= "</select>日\n";
+   return $haku;
+
+}
+
+////////////////////////////////////時セレクトメニュー////////////////////////
+function mrt_fnc_nanzi ($nanzi_sentaku = "",$nanzi_id = "") { 
+   if($nanzi_id == "") { 
+      $haku = "\n<select name=\"nanzi\">\n";
+   } else { 
+      $haku = "\n<select name=\"nanzi".$nanzi_id."\">\n";
+   }
+      for($nanzi = 0;  $nanzi <= 24; $nanzi++) { 
+         if($nanzi <= 9){ //2桁になるかな？
+            $nanzi_t = '0';
+            $nanzi_t .= $nanzi;
+         } else { $nanzi_t = $nanzi; }
+         if ($nanzi_t == $nanzi_sentaku) { //選択されたのが見つかった場合
+            $mituketa = " selected=\"selected\"";
+         } else {//悲しくも見つからなかった場合
+            $mituketa = '';
+         }//1セットづつはきだし
+            $haku .= "<option value=\"$nanzi_t\"$mituketa>$nanzi_t</option>\n";
+      }//吐き出し終了
+   $haku .= "</select>時\n";
+   return $haku;
+
+}
+//////////////////////////////////分セレクトメニュー////////////////////////
+function mrt_fnc_nanhun ($nanhun_sentaku = "",$nanhun_id = "") { 
+   if($nanhun_id == "") { 
+      $haku = "\n<select name=\"nanhun\">\n";
+   } else { 
+      $haku = "\n<select name=\"nanhun".$nanhun_id."\">\n";
+   }
+      for($nanhun = 0;  $nanhun <= 60; $nanhun++) { 
+          if($nanhun <= 9){
+             $nanhun_t = '0';
+             $nanhun_t .= $nanhun;
+          } else { $nanhun_t = $nanhun; }
+          if ($nanhun_t == $nanhun_sentaku) { //選択されたのが見つかった場合
+             $mituketa = " selected=\"selected\"";
+          } else {//悲しくも見つからなかった場合
+             $mituketa = '';
+          }//1セットづつはきだし
+             $haku .= "<option value=\"$nanhun_t\"$mituketa>$nanhun_t</option>\n";
+          }//吐き出し終了
+   $haku .= "</select>分\n";
+   return $haku;
+
+}
+////////////////////////////////////秒セレクトメニュー////////////////////////
+function mrt_fnc_nanbyou ($nanbyou_sentaku = "",$nanbyou_id = "") { 
+   if($nanbyou_id == "") { 
+      $haku = "\n<select name=\"nanbyou\">\n";
+   } else { 
+      $haku = "\n<select name=\"nanbyou".$nanbyou_id."\">\n";
+   }
+   for($nanbyou = 0;  $nanbyou <= 60; $nanbyou++) { 
+      if($nanbyou <= 9){
+         $nanbyou_t = '0';
+         $nanbyou_t .= $nanbyou;
+      } else { $nanbyou_t = $nanbyou; }
+      if ($nanbyou_t == $nanbyou_sentaku) { //選択されたのが見つかった場合
+         $mituketa = " selected=\"selected\"";
+      } else { //悲しくも見つからなかった場合
+         $mituketa = '';
+      } //1セットづつはきだし
+      $haku .= "<option value=\"$nanbyou_t\"$mituketa>$nanbyou_t</option>\n";
+   } //吐き出し終了
+      $haku .= "</select>秒\n";
+   return $haku;
+
+}
+//// ///////////////////////都道府県セレクトメニュー吐き出し//////////////
+function mrt_fnc_kenmei($ken_sentaku = "",$ken_id = "") {
+   $ken_list = array(
+      '北海道・東北地方' => array(
+         '北海道' => '北海道','青森県' => '青森県','岩手県' => '岩手県','宮城県' => '宮城県',
+         '秋田県' => '秋田県','山形県' => '山形県','福島県' => '福島県'
+	   ),
+      '関東地方' => array(
+	     '茨城県' => '茨城県','栃木県' => '栃木県','群馬県' => '群馬県','埼玉県' => '埼玉県',
+         '千葉県' => '千葉県','東京都' => '東京都','神奈川県' => '神奈川県'
+      ),
+      '北陸・甲信越地方' => array(
+	     '新潟県' => '新潟県','富山県' => '富山県','石川県' => '石川県','福井県' => '福井県',
+         '山梨県' => '山梨県','長野県' => '長野県'
+      ),
+      '東海地方' => array(
+	     '岐阜県' => '岐阜県','静岡県' => '静岡県','愛知県' => '愛知県','三重県' => '三重県'
+      ),
+      '関西地方' => array(
+	     '滋賀県' => '滋賀県','京都府' => '京都府','大阪府' => '大阪府','兵庫県' => '兵庫県',
+         '奈良県' => '奈良県','和歌山県' => '和歌山県'
+      ),
+      '中国地方' => array(
+	     '鳥取県' => '鳥取県','島根県' => '島根県','岡山県' => '岡山県','広島県' => '広島県',
+         '山口県' => '山口県'
+      ),
+      '四国地方' => array(
+	     '徳島県' => '徳島県','香川県' => '香川県','愛媛県' => '愛媛県','高知県' => '高知県'
+      ),
+      '九州地方' => array(
+	     '福岡県' => '福岡県','佐賀県' => '佐賀県','長崎県' => '長崎県','熊本県' => '熊本県',
+         '大分県' => '大分県','宮城県' => '宮崎県','鹿児島県' => '鹿児島県','沖縄県' => '沖縄県'
+      ),
+      '日本国外' => array(
+	     '日本国外' => '日本国外'
+      )
+   );
+   if($ken_id == "") {
+      $haku = "<select name=\"add\">\n<option value=\"\">◆都道府県を選択◆</option>\n";
+   } else { 
+      $haku = "<select name=\"".$ken_id."\">\n<option value=\"\">◆都道府県を選択◆</option>\n";
+   }
+      foreach ($ken_list as $grup => $dokoyo) {
+         $haku .= "<optgroup label=\"$grup\">\n";
+         foreach ($dokoyo as $dokoval => $doko) {
+            if($doko == $ken_sentaku) {
+               $mituketa = " selected=\"selected\"";
+            } else {
+               $mituketa = '';
+            }
+               $haku .= "<option value=\"$dokoval\"$mituketa>$doko</option>\n";
+            }
+               $haku .= "</optgroup>\n";
+            }
+   $haku .= "</select>";
+   return $haku;
+} 
+///////////////////////////公開設定リスト/////////////////////////////////////////
+function mrt_fnc_koukai($koukai_word = "", $koukai_name = ""){
+   $koukai_list = array('sinai'=>'しない','suru'=>'する');
+   if($koukai_name == "") { 
+      $haku = "\n<select name=\"koukai\">\n";
+   } else { 
+      $haku = "\n<select name=\"".$koukai_name."\">\n";
+   }
+      foreach ($koukai_list as $kokai_no => $kokai_val) {
+         if ($kokai_no == $koukai_word) { //選択されたのが見つかった場合
+            $mituketa = " selected=\"selected\"";
+         } else { //悲しくも見つからなかった場合
+            $mituketa = '';
+         }//1セットづつはきだし
+            $haku .= "<option value=\"{$kokai_no}\"{$mituketa}>{$kokai_val}</option>\n";
+      }//吐き出し終了
+   $haku .= "</select>\n";
+   return $haku;
+}
+///////////////////////////ありなし設定リスト/////////////////////////////////////////
+function mrt_fnc_arinasi($arinasi_word = "", $arinasi_name = ""){
+   $arinasi_list = array('nasi'=>'なし','ari'=>'あり');
+   if($arinasi_name == "") { 
+      $haku = "\n<select name=\"arinasi\">\n";
+   } else { 
+      $haku = "\n<select name=\"".$arinasi_name."\">\n";
+   }
+      foreach ($arinasi_list as $arinasi_no => $arinasi_val) {
+         if ($arinasi_no == $arinasi_word) { //選択されたのが見つかった場合
+            $mituketa = " selected=\"selected\"";
+         } else { //悲しくも見つからなかった場合
+            $mituketa = '';
+         }//1セットづつはきだし
+            $haku .= "<option value=\"{$arinasi_no}\"{$mituketa}>{$arinasi_val}</option>\n";
+      }//吐き出し終了
+   $haku .= "</select>\n";
+   return $haku;
+}
+//////////////////年齢セレクトメニュー吐き出し//////////////////
+function mrt_fnc_nenrei($nenrei_sentaku = "",$nenrei_id = "") { 
+   $nenrei_tani = "歳";
+   $nenrei_list = array(
+   '18'=>'18','19'=>'19','20'=>'20','21'=>'21','22'=>'22','23'=>'23','24'=>'24','25'=>'25','26'=>'26','27'=>'27',
+   '28'=>'28','29'=>'29','30'=>'30','31'=>'31','32'=>'32','33'=>'33','34'=>'34','35'=>'35','36'=>'36','37'=>'37',
+   '38'=>'38','39'=>'39','40'=>'40','41'=>'41','42'=>'42','43'=>'43','44'=>'44','45'=>'45','46'=>'46','47'=>'47',
+   '48'=>'48','49'=>'49','50'=>'50','51'=>'51','52'=>'52','53'=>'53','54'=>'54','55'=>'55','56'=>'56','57'=>'57',
+   '58'=>'58','59'=>'59','60'=>'60'//,'61'=>'61','62'=>'62','63'=>'63','64'=>'64','65'=>'65','66'=>'66','67'=>'67',
+   //'68'=>'68','69'=>'69','70'=>'70'
+   );
+   if($nenrei_id == "") { 
+      $haku = "\n<select name=\"nenrei\">\n<option value=\"\">ひみつ</option>\n";
+   } else { 
+      $haku = "\n<select name=\"".$nenrei_id."\">\n<option value=\"\">ひみつ</option>\n";
+   }
+      foreach ($nenrei_list as $nenrei_val => $nenrei_dayo) {
+         if ($nenrei_dayo == $nenrei_sentaku) { //選択されたのが見つかった場合
+            $mituketa = " selected=\"selected\"";
+         } else {//悲しくも見つからなかった場合
+            $mituketa = '';
+         }//1セットづつはきだし
+            $haku .= "<option value=\"{$nenrei_val}\"{$mituketa}>{$nenrei_dayo}{$nenrei_tani}</option>\n";
+      }//吐き出し終了
+   $haku .= "</select>\n";
+   return $haku;
+}
+//////////////////星座セレクトメニュー吐き出し//////////////////
+function mrt_fnc_seiza($seiza_sentaku = "",$seiza_id = "") { 
+   $seiza_list = array(
+   '3/21-4/19'=>'牡羊座','4/20-5/20'=>'牡牛座','5/21-6/21'=>'双子座','6/22-7/22'=>'蟹座','7/23-8/22'=>'獅子座',
+   '8/23-9/22'=>'乙女座','9/23-10/23'=>'天秤座','10/24-11/22'=>'蠍座','11/23-12/21'=>'射手座','12/22-1/19'=>'山羊座',
+   '1/20-/18'=>'水瓶座','2/19-3/20'=>'魚座'
+   );
+   if($seiza_id == "") { 
+      $haku = "\n<select name=\"seiza\">\n<option value=\"\">ひみつ</option>\n";
+   } else { 
+      $haku = "\n<select name=\"".$seiza_id."\">\n<option value=\"\">ひみつ</option>\n";
+   }
+      foreach ($seiza_list as $seiza_key => $seiza_val) {
+         if ($seiza_val == $seiza_sentaku) { //選択されたのが見つかった場合
+            $mituketa = " selected=\"selected\"";
+         } else {//悲しくも見つからなかった場合
+            $mituketa = '';
+         }//1セットづつはきだし
+            $haku .= "<option value=\"{$seiza_val}\"{$mituketa}>{$seiza_val}{$seiza_key}</option>\n";
+      }//吐き出し終了
+   $haku .= "</select>\n";
+   return $haku;
+}
+//////////////////身長セレクトメニュー吐き出し//////////////////
+function mrt_fnc_sintyou($sintyou_sentaku = "",$sintyou_id = "") { 
+   $sintyou_list = array(
+   '140'=>'140cm','141'=>'141cm','142'=>'142cm','143'=>'143cm','144'=>'144cm','145'=>'145cm','146'=>'146cm',
+   '147'=>'147cm','148'=>'148cm','149'=>'149cm','150'=>'150cm','151'=>'151cm','152'=>'152cm','153'=>'153cm',
+   '154'=>'154cm','155'=>'155cm','156'=>'156cm','157'=>'157cm','158'=>'158cm','159'=>'159cm','160'=>'160cm',
+   '161'=>'161cm','162'=>'162cm','163'=>'163cm','164'=>'164cm','165'=>'165cm','166'=>'166cm','167'=>'167cm',
+   '168'=>'168cm','169'=>'169cm','170'=>'170cm','171'=>'171cm','172'=>'172cm','173'=>'173cm','174'=>'174cm',
+   '175'=>'175cm','176'=>'176cm','177'=>'177cm','178'=>'178cm','179'=>'179cm','180'=>'180cm','181'=>'181cm',
+   '182'=>'182cm','183'=>'183cm','184'=>'184cm','185'=>'185cm','186'=>'186cm','187'=>'187cm','188'=>'188cm',
+   '189'=>'189cm','190'=>'190cm','191'=>'191cm','192'=>'192cm','193'=>'193cm','194'=>'194cm','195'=>'195cm'
+   );
+   if($sintyou_id == "") { 
+      $haku = "\n<select name=\"sintyou\">\n<option value=\"\">ひみつ</option>\n";
+   } else { 
+      $haku = "\n<select name=\"".$sintyou_id."\">\n<option value=\"\">ひみつ</option>\n";
+   }
+      foreach ($sintyou_list as $sintyou_key => $sintyou_val) {
+         if ($sintyou_key == $sintyou_sentaku) { //選択されたのが見つかった場合
+            $mituketa = " selected=\"selected\"";
+         } else {//悲しくも見つからなかった場合
+            $mituketa = '';
+         }//1セットづつはきだし
+            $haku .= "<option value=\"{$sintyou_key}\"{$mituketa}>{$sintyou_val}</option>\n";
+      }//吐き出し終了
+   $haku .= "</select>\n";
+   return $haku;
+}
+//////////////////バストセレクトメニュー吐き出し//////////////////
+function mrt_fnc_basuto($basuto_sentaku = "",$basuto_id = "") { 
+   $basuto_list = array(
+   '75' =>'75cm', '76' =>'76cm', '77' =>'77cm', '78' =>'78cm', '79' =>'79cm', '80' =>'80cm', '81' =>'81cm',
+   '82' =>'82cm', '83' =>'83cm', '84' =>'84cm', '85' =>'85cm', '86' =>'86cm', '87' =>'87cm', '88' =>'88cm',
+   '89' =>'89cm', '90' =>'90cm', '91' =>'91cm', '92' =>'92cm', '93' =>'93cm', '94' =>'94cm', '95' =>'95cm',
+   '96' =>'96cm', '97' =>'97cm', '98' =>'98cm', '99' =>'99cm', '100'=>'100cm','101'=>'101cm','102'=>'102cm',
+   '103'=>'103cm','104'=>'104cm','105'=>'105cm','106'=>'106cm','107'=>'107cm','108'=>'108cm','109'=>'109cm',
+   '110'=>'110cm'
+   );
+   if($basuto_id == "") { 
+      $haku = "\n<select name=\"basuto\">\n<option value=\"\">ひみつ</option>\n";
+   } else { 
+      $haku = "\n<select name=\"".$basuto_id."\">\n<option value=\"\">ひみつ</option>\n";
+   }
+      foreach ($basuto_list as $basuto_key => $basuto_val) {
+         if ($basuto_key == $basuto_sentaku) { //選択されたのが見つかった場合
+            $mituketa = " selected=\"selected\"";
+         } else {//悲しくも見つからなかった場合
+            $mituketa = '';
+         }//1セットづつはきだし
+            $haku .= "<option value=\"{$basuto_key}\"{$mituketa}>{$basuto_val}</option>\n";
+      }//吐き出し終了
+   $haku .= "</select>\n";
+   return $haku;
+}
+//////////////////ウェストセレクトメニュー吐き出し//////////////////
+function mrt_fnc_uesuto($uesuto_sentaku = "",$uesuto_id = "") { 
+   $uesuto_list = array(
+   '52'=>'52cm','53'=>'53cm','54'=>'54cm','55'=>'55cm','56'=>'56cm','57'=>'57cm','58'=>'58cm',
+   '59'=>'59cm','60'=>'60cm','61'=>'61cm','62'=>'62cm','63'=>'63cm','64'=>'64cm','65'=>'65cm',
+   '66'=>'66cm','67'=>'67cm','68'=>'68cm','69'=>'69cm','70'=>'70cm','71'=>'71cm','72'=>'72cm',
+   '73'=>'73cm','74'=>'74cm','75'=>'75cm','76'=>'76cm','77'=>'77cm','78'=>'78cm','79'=>'79cm',
+   '80'=>'80cm','81'=>'81cm','82'=>'82cm','83'=>'83cm','84'=>'84cm','85'=>'85cm','86'=>'86cm',
+   '87'=>'87cm','88'=>'88cm','89'=>'89cm','90'=>'90cm','91'=>'91cm','92'=>'92cm','93'=>'93cm',
+   '94'=>'94cm','95'=>'95cm','96'=>'96cm','97'=>'97cm','98'=>'98cm','99'=>'99cm','100'=>'100cm'
+   //'101'=>'101cm','102'=>'102cm','103'=>'103cm','104'=>'104cm','105'=>'105cm','106'=>'106cm',
+   //'107'=>'107cm','108'=>'108cm','109'=>'109cm','110'=>'110cm'
+   );
+   if($uesuto_id == "") { 
+      $haku = "\n<select name=\"uesuto\">\n<option value=\"\">ひみつ</option>\n";
+   } else { 
+      $haku = "\n<select name=\"".$uesuto_id."\">\n<option value=\"\">ひみつ</option>\n";
+   }
+      foreach ($uesuto_list as $uesuto_key => $uesuto_val) {
+         if ($uesuto_key == $uesuto_sentaku) { //選択されたのが見つかった場合
+            $mituketa = " selected=\"selected\"";
+         } else {//悲しくも見つからなかった場合
+            $mituketa = '';
+         }//1セットづつはきだし
+            $haku .= "<option value=\"{$uesuto_key}\"{$mituketa}>{$uesuto_val}</option>\n";
+      }//吐き出し終了
+   $haku .= "</select>\n";
+   return $haku;
+}
+//////////////////ヒップセレクトメニュー吐き出し//////////////////
+function mrt_fnc_hip($hip_sentaku = "",$hip_id = "") { 
+   $hip_list = array(
+   //'55'=>'55cm','56'=>'56cm','57'=>'57cm','58'=>'58cm','59'=>'59cm','60'=>'60cm','61'=>'61cm',
+   //'62'=>'62cm','63'=>'63cm','64'=>'64cm','65'=>'65cm','66'=>'66cm','67'=>'67cm','68'=>'68cm',
+   //'69'=>'69cm','70'=>'70cm','71'=>'71cm','72'=>'72cm','73'=>'73cm','74'=>'74cm','75'=>'75cm',
+   '76'=>'76cm','77'=>'77cm','78'=>'78cm','79'=>'79cm','80'=>'80cm','81'=>'81cm','82'=>'82cm',
+   '83'=>'83cm','84'=>'84cm','85'=>'85cm','86'=>'86cm','87'=>'87cm','88'=>'88cm','89'=>'89cm',
+   '90'=>'90cm','91'=>'91cm','92'=>'92cm','93'=>'93cm','94'=>'94cm','95'=>'95cm','96'=>'96cm',
+   '97'=>'97cm','98'=>'98cm','99'=>'99cm','100'=>'100cm','101'=>'101cm','102'=>'102cm',
+   '103'=>'103cm','104'=>'104cm','105'=>'105cm','106'=>'106cm','107'=>'107cm','108'=>'108cm',
+   '109'=>'109cm','110'=>'110cm'
+   );
+   if($hip_id == "") { 
+      $haku = "\n<select name=\"hip\">\n<option value=\"\">ひみつ</option>\n";
+   } else { 
+      $haku = "\n<select name=\"".$hip_id."\">\n<option value=\"\">ひみつ</option>\n";
+   }
+      foreach ($hip_list as $hip_key => $hip_val) {
+         if ($hip_key == $hip_sentaku) { //選択されたのが見つかった場合
+            $mituketa = " selected=\"selected\"";
+         } else {//悲しくも見つからなかった場合
+            $mituketa = '';
+         }//1セットづつはきだし
+            $haku .= "<option value=\"{$hip_key}\"{$mituketa}>{$hip_val}</option>\n";
+      }//吐き出し終了
+   $haku .= "</select>\n";
+   return $haku;
+}
+//////////////////カップセレクトメニュー吐き出し//////////////////
+function mrt_fnc_cup($cup_sentaku = "",$cup_id = "") { 
+   $cup_list = array(
+   'A'=>'Aカップ','B'=>'Bカップ','C'=>'Cカップ','D'=>'Dカップ','E'=>'Eカップ',
+   'F'=>'Fカップ','G'=>'Gカップ','H'=>'Hカップ','I'=>'Iカップ'
+   );
+   if($cup_id == "") { 
+      $haku = "\n<select name=\"cup\">\n<option value=\"\">ひみつ</option>\n";
+   } else { 
+      $haku = "\n<select name=\"".$cup_id."\">\n<option value=\"\">ひみつ</option>\n";
+   }
+      foreach ($cup_list as $cup_key => $cup_val) {
+         if ($cup_key == $cup_sentaku) { //選択されたのが見つかった場合
+            $mituketa = " selected=\"selected\"";
+         } else {//悲しくも見つからなかった場合
+            $mituketa = '';
+         }//1セットづつはきだし
+            $haku .= "<option value=\"{$cup_key}\"{$mituketa}>{$cup_val}</option>\n";
+      }//吐き出し終了
+   $haku .= "</select>\n";
+   return $haku;
+}
+//////////////////////////////ポストのエスケープ￥を除去//////////////////////////////
+function mrt_fnc_enmark_del($mrt_txt = ""){
+   if($mrt_txt != ""){
+      if(get_magic_quotes_gpc()){ 
+         $mrt_txt = stripslashes( $mrt_txt );
+      }
+   }
+   return $mrt_txt;
+}
+//なんちゃって暗号化（7bit化するだけ）何かを足し繰り返し使うと幸せになれる・・
+function mrt_fnc_angouka($txt_res = ''){
+   $mrt_res = '';
+   if($txt_res != ''){
+      $mrt_res = base64_encode($txt_res);
+   }
+   return $mrt_res;
+}
+//なんちゃって複合化・・・暗号化した際のルールだいじ
+function mrt_fnc_hukugouka($txt_res = ''){
+   $mrt_res = '';
+   if($txt_res != ''){
+      $mrt_res = base64_decode($txt_res);
+   }
+   return $mrt_res;
+}
+///////////////////////////カンマ区切りの文字列を配列に変更
+function mrt_fnc_dot_ary($txt = ""){
+   $mrt_mes = "";
+   if($txt != ""){
+      $mrt_mes = explode(',', $txt);
+   }
+   return $mrt_mes;
+}
+///////////////////////////任意の文字区切りの文字列を配列に変更
+function mrt_fnc_dot_any_ary($kugiri = "", $txt = ""){
+   $mrt_mes = "";
+   if($txt != ""){
+      $mrt_mes = explode($kugiri, $txt);
+   }
+   return $mrt_mes;
+}
+//////////カンマ区切りの文字列を配列に変更してkeyに同じ値へ
+function mrt_fnc_dot_vkey_ary($txt = ""){
+   $mrt_ary = array();
+   $dot_ary = array();
+   if($txt != ""){
+      $dot_ary = explode(',', $txt);
+      if(is_array($dot_ary)){
+         foreach($dot_ary as $d_key => $d_val){
+            $mrt_ary[$d_val] = $d_val;
+         }
+      }
+   }
+   unset($dot_ary);
+   return $mrt_ary;
+}
+////////////////////////////配列をカンマ区切りの文字列に変更
+function mrt_fnc_ary_dot($ary_txt = ""){
+   $mrt_mes = "";
+   if(is_array($ary_txt)){
+      $kosu = count($ary_txt);
+      $g = '1';
+      foreach($ary_txt as $ary_key => $ary_val){
+         if($g != $kosu){
+            $mrt_mes .= $ary_val.",";
+         } else {
+            $mrt_mes .= $ary_val;
+         }
+         $g++;
+      }
+   }
+   unset($ary_txt);
+   return $mrt_mes;
+}
+////////////////////////////配列のキーをカンマ区切りの文字列に変更
+function mrt_fnc_ary_key_dot($ary_txt = array()){
+   $mrt_mes = "";
+   if(is_array($ary_txt)){
+      $kosu = count($ary_txt);
+      $g = '1';
+      foreach($ary_txt as $ary_key => $ary_val){
+         if($g != $kosu){
+            $mrt_mes .= $ary_key.",";
+         } else {
+            $mrt_mes .= $ary_key;
+         }
+         $g++;
+      }
+   }
+   unset($ary_txt);
+   return $mrt_mes;
+}
+/////////////////////////////文字列の長さで切り取り
+function mrt_fnc_mojityousei ($txt = '', $fst = '', $lst = '', $up_su = ''){
+   $mrt_mes = "";
+   if($txt != ''){
+      if(mb_strlen($txt,'utf-8') >= $fst && mb_strlen($txt,'utf-8') >= $up_su ) {
+         $mrt_mes  = mb_substr($txt, $fst, $lst,"utf-8");
+         $mrt_mes .= "...";
+      } else {
+         $mrt_mes = $txt;
+      }
+   }
+   unset($txt);
+   return $mrt_mes;
+}
+//////////////////////任意のエスケープ
+function mrt_fnc_esc ($txt = ''){
+   $mrt_okikae_ary = array(
+        '&'  => '&amp;'
+      , '"'  => '&quot;'
+      , '\'' => '&#039;'
+      , '<'  => '&lt;'
+      , '>'  => '&gt;'
+      , '`'  => '&#8245;'
+      //, '\\'   => '&#92;'
+   );
+   $mrt_mes = "";
+   if($txt != ''){
+      $mrt_mes = strtr($txt, $mrt_okikae_ary);
+   } else {
+      $mrt_mes = $txt;
+   }
+   return $mrt_mes;
+}
+/////////////////////////ハイフンで分割配列（日付など
+function mrt_fnc_haihun_ary($txt = ""){
+   $mrt_mes = "";
+   if($txt != ""){
+      $mrt_mes = explode('-', $txt);
+   }
+   return $mrt_mes;
+}
+/////////////////////////指定した文字で分割配列
+function mrt_fnc_any_ary($sk = "", $txt = ""){
+   $mrt_mes = "";
+   if($txt != "" && $sk != ""){
+      $mrt_mes = explode($sk, $txt);
+   }
+   return $mrt_mes;
+}
+/////////////////////////////アクセス振り分け
+function mrt_fnc_huriwake(){
+   $pc    = 'pc';
+   $ketai = 'ktai';
+   $sm    = 'smp';
+   $mrt_mes = "";
+   if(isset($_SERVER['HTTP_USER_AGENT']) ){
+      $agent= $_SERVER['HTTP_USER_AGENT'];
+      if(preg_match("/MSIE/",$agent) && preg_match("/NET/",$agent) || preg_match("/MSIE/",$agent) && preg_match("/NT/",$agent)){
+         $mrt_mes = $pc;
+         return $mrt_mes;
+      } else if (preg_match("/Firefox/",$agent) && !preg_match("/Android/",$agent)){
+         $mrt_mes = $pc;
+         return $mrt_mes;
+      } else if (preg_match("/Opera/i",$agent)&&!preg_match ("/Nitro/",$agent)&&!preg_match ("/Mini/",$agent)){
+         $mrt_mes = $pc;
+         return $mrt_mes;
+      } else if (preg_match("/Netscape/",$agent)){
+         $mrt_mes = $pc;
+         return $mrt_mes;
+      } else if (preg_match("/KDDI/",$agent)||preg_match ("/UP\.Browser/",$agent)){
+         $mrt_mes = $ketai;
+         return $mrt_mes;
+      } else if (preg_match("/^DoCoMo/",$agent)){ 
+         $mrt_mes = $ketai;
+         return $mrt_mes;
+      } else if (preg_match("/J-PHONE/",$agent)){
+         $mrt_mes = $ketai;
+         return $mrt_mes;
+      } else if (preg_match("/Vodafone/",$agent)){
+         $mrt_mes = $ketai;
+         return $mrt_mes;
+      } else if (preg_match("/SoftBank/",$agent)){
+         $mrt_mes = $ketai;
+         return $mrt_mes;
+      } else if (preg_match("/Opera/",$agent) && preg_match ("/Mini/",$agent) ){
+         $mrt_mes = $pc;
+         return $mrt_mes;
+      } else if (preg_match("/Android/",$agent)){ 
+         $mrt_mes = $sm;
+         return $mrt_mes;
+      } else if (preg_match ("/iPhone/",$agent)){ 
+         $mrt_mes = $sm;
+         return $mrt_mes;
+      } else {
+         $mrt_mes = $pc;
+         return $mrt_mes;
+      }
+   }
+}
+/////////////文字列範囲切り取りoutput=array for utf8
+function mrt_fnc_txt_hani($kara = '', $made = '', $txt = ''){
+//$dd = '/<TABLE(.+)<\/TABLE>/is'; is \n
+   if($kara != '' && $made != '' && $txt != ''){
+      $st = '/'.$kara.'(.+)'.$made.'/is';
+      preg_match($st, $txt, $mrt_ary);
+   }
+   return $mrt_ary;
+}
+//xhr用エスケープ
+function mrt_fnc_prp_esc ($txt = ''){
+   $mrt_okikaeru_ary = array( '=',  ',',   "'", '"');
+   $mrt_okikaego_ary = array( '＝', '、',  '',  '');
+   
+   $mrt_mes = "";
+   if($txt != ''){
+      $mrt_mes = str_replace($mrt_okikaeru_ary, $mrt_okikaego_ary, $txt);
+   } else {
+      $mrt_mes = $txt;
+      
+   }
+   return $mrt_mes;
+}
+//改行コード取り除く
+function mrt_fnc_enter_null($txt = ''){
+   $mrt_okikaeru_ary = array("\r\n", "\r", "\n");
+   $mrt_okikaego_ary = array("",     "",   "");
+   
+   $mrt_mes = "";
+   if($txt != ''){
+      $mrt_mes = str_replace($mrt_okikaeru_ary, $mrt_okikaego_ary, $txt);
+   } else {
+      $mrt_mes = $txt;
+   }
+   return $mrt_mes;
+}
+//空白文字を取り除く
+function mrt_fnc_space_null($txt = ''){
+   $mrt_okikaeru_ary = array("　", " ");
+   $mrt_okikaego_ary = array("",   "");
+   
+   $mrt_mes = "";
+   if($txt != ''){
+      $mrt_mes = str_replace($mrt_okikaeru_ary, $mrt_okikaego_ary, $txt);
+   } else {
+      $mrt_mes = $txt;
+   }
+   return $mrt_mes;
+}
+//タイムスタンプより年を取得してテキストエリアで吐き出し
+function mrt_fnc_tstmp_year_input_text($inpt_nm = "", $tstmp = ""){
+   $mrt_ary = array(); $mrt_ary['val'] = "";
+   if($tstmp == ""){
+      $tstmp = time();
+   }
+   $y = date('Y', $tstmp);
+   if($inpt_nm == ""){$inpt_nm = "nen";}
+   $mrt_ary['val'] = "<input type=\"text\" name=\"".$inpt_nm.
+                     "\" size=\"3\" maxlength=\"4\" value=\"".$y."\" />\n";
+   unset($y); unset($inpt_nm); unset($tstmp);
+   return $mrt_ary['val'];
+}
+//タイムスタンプより月を取得してセレクトで吐き出し
+function mrt_fnc_tstmp_month_input_select($inpt_nm = "", $tstmp = ""){
+   $mrt_ary = array(); $mrt_ary['val'] = "";
+   if($tstmp == ""){
+      $tstmp = time();
+   }
+   $m = date('m', $tstmp);
+   if($inpt_nm == ""){$inpt_nm = "mon";}
+   $mrt_ary['val'] .= "<select name=\"".$inpt_nm."\">\n";
+   for($a = '1'; $a <= $mx = '12'; $a++){
+      $ka = sprintf('%02d', $a);
+      if($ka == $m){$slctd = " selected=\"selected\"";} else {$slctd = "";}
+      $mrt_ary['val'] .= "<option value=\"".$ka."\"".$slctd.">".$ka."</option>\n";
+   }
+   $mrt_ary['val'] .= "</select>\n";
+   unset($inpt_nm); unset($tstmp); unset($slctd);
+   return $mrt_ary['val'];
+}
+//タイムスタンプより日を取得してセレクトで吐き出し
+function mrt_fnc_tstmp_day_input_select($inpt_nm = "", $tstmp = ""){
+   $mrt_ary = array(); $mrt_ary['val'] = "";
+   if($tstmp == ""){
+      $tstmp = time();
+   }
+   $d = date('d', $tstmp);
+   if($inpt_nm == ""){$inpt_nm = "day";}
+   $mrt_ary['val'] .= "<select name=\"".$inpt_nm."\">\n";
+   for($a = '1'; $a <= $mx = '31'; $a++){
+      $ka = sprintf('%02d', $a);
+      if($ka == $d){$slctd = " selected=\"selected\"";} else {$slctd = "";}
+      $mrt_ary['val'] .= "<option value=\"".$ka."\"".$slctd.">".$ka."</option>\n";
+   }
+   $mrt_ary['val'] .= "</select>\n";
+   unset($inpt_nm); unset($tstmp); unset($slctd); unset($d);
+   return $mrt_ary['val'];
+}
+//タイムスタンプより時を取得してセレクトで吐き出し
+function mrt_fnc_tstmp_hours_input_select($inpt_nm = "", $tstmp = ""){
+   $mrt_ary = array(); $mrt_ary['val'] = "";
+   if($tstmp == ""){
+      $tstmp = time();
+   }
+   $h = date('H', $tstmp);
+   if($inpt_nm == ""){$inpt_nm = "hou";}
+   $mrt_ary['val'] .= "<select name=\"".$inpt_nm."\">\n";
+   for($a = '0'; $a < $mx = '24'; $a++){
+      $ka = sprintf('%02d', $a);
+      if($ka == $h){$slctd = " selected=\"selected\"";} else {$slctd = "";}
+      $mrt_ary['val'] .= "<option value=\"".$ka."\"".$slctd.">".$ka."</option>\n";
+   }
+   $mrt_ary['val'] .= "</select>\n";
+   unset($inpt_nm); unset($tstmp); unset($slctd); unset($h);
+   return $mrt_ary['val'];
+}
+//タイムスタンプより分を取得してセレクトで吐き出し
+function mrt_fnc_tstmp_min_input_select($inpt_nm = "", $tstmp = ""){
+   $mrt_ary = array(); $mrt_ary['val'] = "";
+   if($tstmp == ""){
+      $tstmp = time();
+   }
+   $i = date('i', $tstmp);
+   if($inpt_nm == ""){$inpt_nm = "min";}
+   $mrt_ary['val'] .= "<select name=\"".$inpt_nm."\">\n";
+   for($a = '0'; $a < $mx = '60'; $a++){
+      $ka = sprintf('%02d', $a);
+      if($ka == $i){$slctd = " selected=\"selected\"";} else {$slctd = "";}
+      $mrt_ary['val'] .= "<option value=\"".$ka."\"".$slctd.">".$ka."</option>\n";
+   }
+   $mrt_ary['val'] .= "</select>\n";
+   unset($inpt_nm); unset($tstmp); unset($slctd); unset($i); unset($ka);
+   return $mrt_ary['val'];
+}
+//タイムスタンプより秒を取得してセレクトで吐き出し
+function mrt_fnc_tstmp_sec_input_select($inpt_nm = "", $tstmp = ""){
+   $mrt_ary = array(); $mrt_ary['val'] = "";
+   if($tstmp == ""){
+      $tstmp = time();
+   }
+   $s = date('s', $tstmp);
+   if($inpt_nm == ""){$inpt_nm = "sec";}
+   $mrt_ary['val'] .= "<select name=\"".$inpt_nm."\">\n";
+   for($a = '0'; $a < $mx = '60'; $a++){
+      $ka = sprintf('%02d', $a);
+      if($ka == $s){$slctd = " selected=\"selected\"";} else {$slctd = "";}
+      $mrt_ary['val'] .= "<option value=\"".$ka."\"".$slctd.">".$ka."</option>\n";
+   }
+   $mrt_ary['val'] .= "</select>\n";
+   unset($inpt_nm); unset($tstmp); unset($slctd); unset($s); unset($ka);
+   return $mrt_ary['val'];
+}
+//シリアライズとエンコード
+function mrt_fnc_serialize64($seria_ary = array()){
+   $mrt_val = "";
+   if(is_array($seria_ary)){
+      $mrt_val = serialize($seria_ary);
+      $mrt_val = base64_encode($mrt_val);
+   }
+   unset($seria_ary);
+   return $mrt_val; //テキストオブジェクト
+}
+//アンシリアライズとエンコード
+function mrt_fnc_unserialize64($seria_val = ""){
+   $mrt_ary = array(); $mrt_val = "";
+   if($seria_val != ""){
+      $mrt_val = base64_decode($seria_val);
+      $mrt_ary = unserialize($mrt_val);
+      
+   }
+   unset($seria_val); unset($mrt_val);
+   return $mrt_ary; //配列オブジェクト
+}
+//文字数カウント
+function mrt_fnc_moji_count($txt_val = ""){
+   $mrt_ary = array(); $mrt_ary['val'] = "";
+   if($txt_val != ""){
+      $mrt_ary['txt'] = $txt_val;
+      $mrt_ary['count'] = mb_strlen($txt_val,"UTF-8");
+   }
+   unset($txt_val);
+   return $mrt_ary;
+}
+//秒を時刻
+function mrt_fnc_byou_jikoku($byou = "") {
+
+   $hours = floor($byou / 3600);
+   $minutes = floor(($byou / 60) % 60);
+   $seconds = $byou % 60;
+
+   $hms = sprintf("%02d:%02d:%02d", $hours, $minutes, $seconds);
+
+   return $hms;
+
+}
+//キャリッジターンで配列化
+function mrt_fnc_text_enter_ary($txt = ""){
+   $src_tag_ary = array();
+   if($txt != ""){
+      $bf_src_tag = $txt;
+      $bf_src_tag = str_replace(",", "&#44;", $bf_src_tag);
+      $bf_src_tag = str_replace("\r\n", "\r", $bf_src_tag);
+      $bf_src_tag = str_replace("\r", "\n", $bf_src_tag);
+      $bf_src_tag = str_replace("\n", ",", $bf_src_tag);
+      //
+      $bf_tag = explode(',', $bf_src_tag);
+      foreach($bf_tag as $bf_n => $bf_val){
+         $bf_val = trim($bf_val);
+         $bf_val = mrt_fnc_src_bspc_chk($bf_val);
+         if($bf_val != "" && $bf_val != "　"){
+            $src_tag_ary[] = $bf_val;
+         }
+      }
+   }
+   unset($txt); unset($bf_src_tag); unset($bf_tag); unset($bf_val);
+   return $src_tag_ary;
+}
+////////////////////////////////前後の全角スペース削除//////////////////////////////
+function mrt_fnc_src_bspc_chk($text = "") { 
+   mb_regex_encoding('UTF-8');
+   $d = preg_replace('/^[\s　]*(.*?)[\s　]*$/u', '\1', $text);
+   return $d;
+}
+
+?>

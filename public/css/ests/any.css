@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+.yokokara {
+  position: fixed;
+  top: 0;
+  left: -100%; /* 初期状態で画面外に配置 */
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+  text-align: center;
+  padding-top: 200px;
+  z-index: 1000; /* 他の要素より前面に表示 */
+}
+.close {
+  position: absolute; /* position を指定 */
+  top: 20px;
+  right: 20px; /* 右から20pxの位置に配置 */
+}

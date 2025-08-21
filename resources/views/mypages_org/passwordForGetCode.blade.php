@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>
+        コスモ天国ネット | パスワード再発行フォーム
+    </title>
+
+    <!-- Scripts -->
+    <!-- <; src="{{ asset('js/app.js') }}" defer></script> -->
+    <!-- font-awesome -->
+    <link rel="stylesheet" href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}">
+    <!-- <link rel="stylesheet" href="{{ asset('vendor/overlayScrollbars/css/OverlayScrollbars.min.css') }}"> -->
+    <link rel="stylesheet" href="{{ asset('vendor/adminlte/dist/css/adminlte.min.css') }}">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <!-- icon -->
+    <link rel="icon" href="{{ asset('tengoku_woman.png') }}">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.css">
+
+    <link rel="stylesheet" href="{{ asset('vendor/toastr/toastr.min.css') }}"></link>
+    <style>
+      #overlay{ 
+        position: fixed;
+        top: 0;
+        z-index: 100;
+        width: 100%;
+        height:100%;
+        display: none;
+        background: rgba(0,0,0,0.6);
+      }
+      .cv-spinner {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;  
+      }
+      .spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px #ddd solid;
+        border-top: 4px #2e93e6 solid;
+        border-radius: 50%;
+        animation: sp-anime 0.8s infinite linear;
+      }
+      @keyframes sp-anime {
+        100% { 
+            transform: rotate(360deg); 
+        }
+      }
+      .is-hide{
+        display:none;
+      }
+    </style>
+</head>
+<body>
+  <header>
+  </header>
+
+  <main>
+    <div id="overlay">
+        <div class="cv-spinner">
+            <span class="spinner"></span>
+        </div>
+    </div>
+    <div class="container" style="width: 360px;">
+      <img class="my-5" src="{{ asset('img/logo.png') }}" style="width: 270px"/>
+          <div class="form-group">
+            <label for="phone">認証コード</label><br>
+            <input type="text" class="form-control" name="code" id="code" placeholder="" /><br>
+          </div>   
+          
+          <!-- <div class="form-group">
+            <label for="password">パスワード</label>
+            <input type="password" class="form-control" name="password" id="password" placeholder="" style="width: 270px" />
+          </div>   -->
+  
+          <div class="form-bottom">
+            <!-- <a href="{{ route('mypage.forget') }}" class="original-src mr-3" style="font-size: 0.8rem">パスワードを忘れた方はこちら</a> -->
+            <button class="btn" id="submit_btn" style="background: #EF747D;color: white"><small>送信する</small></button>            
+          </div>
+    </div>
+  </main>
+  <!-- <footer>
+    <p class="footer-copyright">
+      Copyright(C)2023 コスモ天国ネット All Rights Reserved
+    </p>
+  </footer> -->
+  <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+  <script src="{{ asset('vendor/toastr/toastr.min.js') }}"></script>
+
+  <script>
+    
+
+    //localstorageに認証データがあれば、自動でログインさせる
+    // $(document).ready(function() {
+    //   $("#overlay").fadeIn(300);
+    //   const parameter = {
+    //     user_id: localStorage.getItem('user_id'),
+    //     user_token: localStorage.getItem('user_token')
+    //   }
+    //   $.ajax({
+    //     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+    //     data: JSON.stringify(parameter),
+    //     type: "POST",
+    //     contentType: "application/json",
+    //     url: "{{ route('mypage.check.token') }}",
+    //     dataType:"json",
+    //   }).done(function(data, status, jqXHR) {
+    //     if(data.result == 0) {
+    //       // 成功時リロード
+    //       location.href = "{{ route('mypage.top') }}"
+    //     }
+    //   }).fail(function(jqXHR, textStatus, errorThrown) {
+    //     console.log(jqXHR)
+    //     // $(".image-btn-submit").prop('disabled', false);
+    //   }).always(function (data) {
+    //     // 常に実行する処理
+    //     $("#overlay").fadeOut(300);
+    //   });        
+    // });
+
+    $('#submit_btn').on('click', function() {
+      if(!$('#code').val()) {
+        return;
+      }
+      const parameter = {
+        code: $('#code').val(),
+      }
+      $("#overlay").fadeIn(300);
+      $.ajax({
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        data: JSON.stringify(parameter),
+        type: "POST",
+        contentType: "application/json",
+        url: "{{ route('mypage.password.code') }}",
+        dataType:"json",
+      }).done(function(data, status, jqXHR) {
+        if(data.result == 0) {
+          // 成功時リロード
+          // localStorage.setItem("user_id",data.user_id)
+          // localStorage.setItem("user_token",data.user_token)
+          location.href = "{{ route('mypage.password.confirm') }}"
+        } else {
+          toastr.error(data.message)
+          // $(".image-btn-submit").prop('disabled', false);
+        }
+      }).fail(function(jqXHR, textStatus, errorThrown) {
+        toastr.error('処理に失敗しました。')
+        console.log(jqXHR)
+        // $(".image-btn-submit").prop('disabled', false);
+      }).always(function (data) {
+        // 常に実行する処理
+            $("#overlay").fadeOut(300);
+            // setTimeout(function(){
+            //     $("#overlay").fadeOut(300);
+            // },500);
+      });        
+    });
+  </script>
+</body>
+</html>

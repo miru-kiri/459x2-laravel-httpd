@@ -1,0 +1,1184 @@
+/*------高松--------*/
+div[style*="background-color: #debb00"]{
+    background-image:url("https://459x.com/storage/top/area_jyoto.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-color: unset!important;
+}
+div[style*="background-color: #debb00"] > div > h2{
+    font-size: 1rem!important;
+}
+/*-----琴平------*/
+div[style*="background-color: #d72187"]{
+    background-image:url("https://459x.com/storage/top/area_kotohira.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-color: unset!important;
+}
+div[style*="background-color: #d72187"] > div > h2{
+    font-size: 1rem!important;
+}
+/*--松山道後歌舞伎通り--*/
+div[style*="background-color: #128499"]{
+    background-image:url("https://459x.com/storage/top/area_dogo.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-color: unset!important;
+}
+div[style*="background-color: #128499"] > div > h2{
+    font-size: 0.8rem!important;
+}
+/*-------松山市-------*/
+div[style*="background-color: #ff6666"]{
+    background-image:url("https://459x.com/storage/top/area_matsuyama.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-color: unset!important;
+}
+div[style*="background-color: #ff6666"] > div > h2{
+    font-size: 1rem!important;
+}
+/*-------新居浜-------*/
+div[style*="background-color: #76c66b"]{
+    background-image:url("https://459x.com/storage/top/area_niihama.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-color: unset!important;
+}
+div[style*="background-color: #76c66b"] > div > h2{
+    font-size: 1rem!important;
+}
+/*-----四国中央-------*/
+div[style*="background-color: #996fae"]{
+    background-image:url("https://459x.com/storage/top/area_shikoku.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-color: unset!important;
+}
+div[style*="background-color: #996fae"] > div > h2{
+    font-size: 1rem!important;
+}
+/*----白色三角形----*/
+div[class="genre-card-triangle"]{
+    display: none;
+}
+.genre-card-title{
+    margin-top: 6.3rem;
+    margin-bottom: 0.5rem;
+}
+@media(min-width:768px) {
+    div[style*="background-color: #debb00"],div[style*="background-color: #d72187"],div[style*="background-color: #128499"],
+    div[style*="background-color: #ff6666"],div[style*="background-color: #76c66b"],div[style*="background-color: #996fae"]{
+        height: 415px;
+    }
+    div[style*="background-color: #debb00"] > div > h2,div[style*="background-color: #d72187"] > div > h2,
+    div[style*="background-color: #128499"] > div > h2,div[style*="background-color: #ff6666"] > div > h2,
+    div[style*="background-color: #76c66b"] > div > h2,div[style*="background-color: #996fae"] > div > h2{
+        font-size: 1.8rem!important;
+    }
+    .genre-card-title{
+        margin-top: 20rem;
+    }
+}
+/*----top css変更----*/
+/*----header変更----*/
+header div.sp{
+    margin-bottom: 0!important;
+}
+/*----コンテンツボタンの変更----*/
+div[style*="background-color: #E73E90"],div[style*="background-color: #00ACA0"],
+div[style*="background-color: #9860A4"],div[style*="background-color: #EC7291"],
+div[style*="background-color: #8FC31F"],div[style*="background-color: #F39800"],
+div[style*="background-color: #917961"]{
+    border: 10px solid rgba(0, 0, 0, 0);
+    margin-bottom: 0;
+    border-radius: 0;
+}
+div[style*="background-color: #E73E90"] > img,div[style*="background-color: #00ACA0"] > img,
+div[style*="background-color: #9860A4"] > img,div[style*="background-color: #EC7291"] > img,
+div[style*="background-color: #8FC31F"] > img,div[style*="background-color: #F39800"] > img,
+div[style*="background-color: #917961"] > img{
+    height: unset;
+    object-fit: cover;
+}
+.container > div[class*="row"]{
+    --bs-gutter-x:0;
+}
+.card-body{
+    flex: 1 1 auto;
+    padding: 0.5rem 0 0 0;
+}
+h2[class*="top_img_text"]{
+    margin: 0;
+}
+/*-----追加テキスト--------*/
+.test_text{
+    background-color:#ebe416;
+    font-weight: bold;
+}
+.test_text_title{
+    font-size: 30px;
+    font-weight: 900;
+    letter-spacing: 0.4rem;
+    line-height: 1.5rem;
+    padding: 25px 0;
+}
+.test_text_title > span{
+    font-size: 12px;
+    font-weight: bold;
+}
+.test_text_official{
+    padding: 15px 30px;
+}
+.test_text_official > P{
+    font-size: 20px;
+}
+.test_text_content{
+    padding: 0 30px;
+}
+.test_text_content > p{
+    margin: 0;
+    padding-bottom: 20px;
+}
+.portal{
+    font-size: 20px;
+    font-weight: bold;
+     padding-bottom: 25px;
+}
+/*----news変更----*/
+.news{
+    margin: 25px 0;
+}
+/*----アイテム----*/
+.bgc_1{
+    background-color:#ebe416;
+}
+.bgc_2{
+    background-color: #a4d9f8;
+}
+.bgc_3{
+    background-color: #fff9a9;
+}
+.text_red{
+    color: #e91212;
+}
+.pd_bottom{
+    padding-bottom: 20px;
+}
+@media(min-width:768px){
+    .test_text_title{
+        font-size: 70px;
+        line-height: 2.5rem;
+        padding: 50px 0 0 0;
+    }
+    .test_text_title > span{
+        font-size: 24px;
+    }
+    .test_text_official > p{
+        font-size: 30px;
+    }
+    .test_text_content{
+        font-size: 20px;
+        padding-top:15px;
+    }
+}
+/*----dogo-kabuki-css------*/
+.kabuki {
+    margin: 0 auto;
+    max-width: 1200px;
+    width: 100%;
+    background-color: #f9f6f2;
+  }
+  .kabuki_bg{
+    background-image: url("https://459x.com/storage/top/kabuki_test_2.png"), url("https://459x.com/storage/top/kabuki_bg.jpg");
+    background-color: unset; 
+    background-repeat: no-repeat, repeat-x;
+    background-position: right, center;
+    background-size: 150px 150px, contain; 
+  }
+  .kabuki h1 {
+    font-size: 2rem;
+    padding: 20px 0;
+    font-weight: bold;
+    margin-bottom: 50px;
+    background-image: url(../img/kabuki_img/kabuki_background.png);
+    color: #fff;
+    text-align: center;
+    background-color: #2e2e2e;
+  }
+  .kabuki h2 {
+    font-size: 1.5rem;
+    border-left: 6px solid #d4af37;
+    padding-left: 12px;
+    margin: 0 auto 20px auto;
+    width: 80%;
+  }
+  .kabuki a{
+    text-decoration: none;
+  }
+  .kabuki p {
+    font-size: 1.1rem;
+    margin:0 auto !important;
+    text-align: justify;
+    padding: 20px 25px;
+  }
+  .kabuki .image-block {
+    text-align: center;
+    margin: 20px 0;
+  }
+  .kabuki .image-block img {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+  .kabuki_wiki{
+    font-size: 1.1rem;
+    width: 80%;
+    margin: 20px auto 0 auto;
+    text-align: justify;
+    padding: 20px 10px;
+  }
+  .kabuki_link {
+    padding: 50px 1em 1em 1em;
+  }
+
+  .kabuki_link h3 {
+    font-size: 1.6em;
+    margin-bottom: 1em;
+    color: #333;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 0.5em;
+  }
+
+  .kabuki_link div {
+    margin-bottom: 1em;
+    font-size: 1em;
+  }
+
+  .kabuki_link ul {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    column-gap: 25px;
+  }
+
+  .kabuki_link li {
+    margin-bottom: 0.6em;
+    font-size: 1em;
+    padding-top: 15px;
+  }
+
+  .kabuki_link a {
+    text-decoration: none;
+    color: inherit;
+  }
+  .kabuki_link a:hover {
+    text-decoration: underline;
+    color: #007acc;
+  }
+  /* Responsive */
+  @media (max-width: 768px) {
+    .kabuki h1 {
+      font-size: 1.6rem;
+    }
+
+    .kabuki h2 {
+      font-size: 1.3rem;
+    }
+    .kabuki p {
+      font-size: 13px;
+    }
+  }
+  @media (max-width: 480px) {
+    main {
+      padding: 0 15px;
+    }
+    .kabuki h1 {
+      font-size: 1.3rem;
+    }
+    .kabuki h2 {
+      font-size: 1.1rem;
+      margin: 0 auto;
+    }
+  }
+  @media (max-width: 768px) {
+    .kabuki_link {
+      font-size: 0.95em;
+    }
+
+    .kabuki_link h3 {
+      font-size: 1.2em;
+    }
+
+    .kabuki_link li {
+      font-size: 0.95em;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .kabuki_link {
+      font-size: 0.9em;
+    }
+
+    .kabuki_link h3 {
+      font-size: 1.1em;
+    }
+  }
+  /*---krn-2025_5_29 point_event_none---*/
+.point_none{
+   pointer-events: none;
+}
+/*------求人css 2025_6_17 krn-------*/
+a{
+  text-decoration: none;
+}
+.kjn_sec{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 10px;
+    background-color: #fff;
+}
+.kjn_img{
+  width: 100%;
+  text-align: center;
+}
+.kjn_img img{
+  width: 100%;
+  object-fit: cover;
+}
+.kjn_ttl h1{
+  text-align: center;
+  font-size: 19px;
+}
+@media (min-width:767px){
+  .kjn_ttl h1{
+    font-size: 30px;
+  }
+}
+.kjn_ela{
+  display: flex;
+  align-items: center;
+  margin-top: 80px;
+  padding: 0 0 0 15px;
+}
+.kjn_ela img{
+  width: 30px;
+  height: 30px;
+}
+.kjn_ela h2{
+  padding-left: 20px;
+  font-size: 19px;
+  color: #e9537a;
+}
+/*-----マップ画像関係------*/
+.map{
+    background-image: url("https://459x.com/storage/top/map_img.png");
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    max-width: 320px;
+    width: 100%;
+    height: 320px;
+    margin: 0 auto;
+}
+.map_item{
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  border-radius: 50%;
+}
+.map_item a{
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding-top: 10px;
+  font-size: 12px;
+  font-weight: bold;
+  text-decoration: none;
+  color:#fff;
+}
+.map_mty{
+  position: absolute;
+  left: 22%;
+  top: 34%;
+  background-color: #ea5514;
+}
+.map_nhm{
+  position: absolute;
+  left: 38%;
+  top: 27%;
+  background-color: #b086ba;
+}
+.map_sto{
+  position: absolute;
+  left: 53%;
+  top: 30%;
+  background-color:#65bc81;
+}
+.map_sto a{
+  padding-top: 3px;
+}
+.map_khr{
+  position: absolute;
+  left: 67%;
+  top: 21%;
+  background-color: #c9a063;
+}
+.map_tmt{
+  position: absolute;
+  left: 80%;
+  top: 8%;
+  background-color: #8fc31f;
+}
+@media (min-width:480px){
+   .map{
+       background-size: 100%;
+       background-position: center;
+       background-repeat: no-repeat;
+       position: relative;
+       max-width: 600px;
+       width: 100%;
+       height: 600px;
+       margin: 0 auto;
+   }
+   .map_item{
+     width: 60px;
+     height: 60px;
+     text-align: center;
+     border-radius: 50%;
+   }
+   .map_item a{
+     display: block;
+     width: 100%;
+     height: 100%;
+     padding-top: 17px;
+     font-size: 17px;
+     font-weight: bold;
+     text-decoration: none;
+     color:#fff;
+   }
+   .map_mty{
+     position: absolute;
+     left: 20%;
+     top: 36%;
+     background-color: #ea5514;
+   }
+   .map_nhm{
+     position: absolute;
+     left: 39%;
+     top: 32%;
+     background-color: #b086ba;
+   }
+   .map_sto{
+     position: absolute;
+     left: 53%;
+     top: 34%;
+     background-color:#65bc81;
+   }
+   .map_sto a{
+     padding-top: 7px;
+   }
+   .map_khr{
+     position: absolute;
+     left: 67%;
+     top: 26%;
+     background-color: #c9a063;
+   }
+   .map_tmt{
+     position: absolute;
+     left: 80%;
+     top: 15%;
+     background-color: #8fc31f;
+   }
+
+}
+@media (min-width:767px){
+  .map{
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    max-width: 800px;
+    width: 100%;
+    height: 800px;
+    margin: 0 auto;
+  }
+  .map_item{
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    border-radius: 50%;
+  }
+  .map_item a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding-top: 25px;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    color:#fff;
+  }
+  .map_mty{
+    position: absolute;
+    left: 22%;
+    top: 34%;
+    background-color: #ea5514;
+  }
+  .map_nhm{
+    position: absolute;
+    left: 38%;
+    top: 27%;
+    background-color: #b086ba;
+  }
+  .map_sto{
+    position: absolute;
+    left: 53%;
+    top: 30%;
+    background-color:#65bc81;
+  }
+  .map_sto a{
+    padding-top: 12px;
+  }
+  .map_khr{
+    position: absolute;
+    left: 67%;
+    top: 21%;
+    background-color: #c9a063;
+  }
+  .map_tmt{
+    position: absolute;
+    left: 80%;
+    top: 10%;
+    background-color: #8fc31f;
+  }
+}
+/*-----map　エリアリスト----*/
+.ala{
+  max-width: 800px;
+  width: 100%;
+  margin: 10px auto 100px auto;
+}
+.ala h2{
+  font-size: 19px;
+  padding: 20px 0 20px 20px;
+  color: #e9537a;
+}
+.ala_lst{
+  display: flex;
+  justify-content: space-around;
+}
+.ala_lst_item{
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  border-radius: 50%;
+}
+.ala_lst_item a{
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding-top: 10px;
+  font-size: 12px;
+  font-weight: bold;
+  text-decoration: none;
+  color:#fff;
+}
+.lst_sto a{
+  padding-top: 3px;
+}
+@media (min-width:480px){
+  .ala h2{
+    font-size: 19px;
+    padding: 20px 0 20px 20px;
+  }
+  .ala_lst{
+    display: flex;
+    justify-content: space-around;
+  }
+  .ala_lst_item{
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    border-radius: 50%;
+  }
+  .ala_lst_item a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding-top: 17px;
+    font-size: 17px;
+    font-weight: bold;
+    text-decoration: none;
+    color:#fff;
+  }
+  .lst_sto a{
+    padding-top: 7px;
+  }
+}
+@media (min-width:767px){
+  .ala h2{
+    font-size: 19px;
+    padding: 20px 0 20px 20px;
+  }
+  .ala_lst{
+    display: flex;
+    justify-content: space-around;
+  }
+  .ala_lst_item{
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    border-radius: 50%;
+  }
+  .ala_lst_item a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding-top: 25px;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    color:#fff;
+  }
+  .lst_sto a{
+    padding-top: 12px;
+  }
+}
+
+
+.kjn_info {
+  width: 100%;
+  margin: 25px 0;
+  padding: 20px 15px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  box-sizing: border-box;
+  border: 2px solid #f2646f;
+}
+.kjn_memo {
+  width: 100%;
+  margin: 25px 0;
+  padding: 20px 15px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  box-sizing: border-box;
+  border: 2px solid #099707;
+
+}
+.kjn_info h2 {
+  font-size: 1.4em;
+  margin-bottom: 15px;
+  color: #222;
+  border-left: 5px solid #f2646f;
+  padding-left: 10px;
+}
+.kjn_memo h2 {
+  font-size: 1.4em;
+  margin-bottom: 15px;
+  color: #222;
+  border-left: 5px solid #099707;
+  padding-left: 10px;
+}
+.kjn_info p,
+.kjn_memo p {
+  font-size: 0.95em;
+  line-height: 1.9;
+  color: #444;
+  margin-bottom: 15px;
+}
+.kjn_info ul {
+  padding-left: 20px;
+  margin-top: 15px;
+}
+.kjn_info li {
+  margin-bottom: 10px;
+  font-size: 0.9em;
+  line-height: 1.9;
+  color: #555;
+}
+.kjn_info li strong {
+  color: #f2646f;
+}
+@media (min-width: 767px) {
+  .kjn_info,
+  .kjn_memo {
+    padding: 25px 20px;
+  }
+  .kjn_info h2,
+  .kjn_memo h2 {
+    font-size: 1.6em;
+  }
+  .kjn_info p,
+  .kjn_memo p,
+  .kjn_info li {
+    font-size: 1em;
+  }
+}
+/*------item------------*/
+/*---道後・松山---*/
+.bg_col_1{
+  background-color: #ea5514;
+}
+/*---新居浜---*/
+.bg_col_2{
+  background-color: #b086ba;
+}
+/*---四国中央---*/
+.bg_col_3{
+  background-color: #65bc81;
+}
+/*---琴平---*/
+.bg_col_4{
+  background-color: #c9a063;
+}
+/*---高松---*/
+.bg_col_5{
+  background-color: #8fc31f;
+}
+.k_clr1{
+  color:#000;
+}
+/*------愛媛css---------*/
+.kjn_cnt h2{
+  width: 100%;
+  padding: 5px 0;
+  text-align: center;
+  font-size: 16px;
+  color:#fff;
+}
+.kjn_cnt img{
+  width: 100%;
+}
+@media (min-width:767px){
+  .kjn_cnt h2{
+    font-size: 32px;
+  }
+
+}
+/*----道後と松山のタブ-----*/
+.tabs {
+  display: flex;
+  margin: 10px auto;
+  cursor: pointer;
+  justify-content: space-around;
+}
+.tab {
+  padding: 5px 30px;
+  width: 150px;
+  text-align: center;
+  background: #f5f2f2;
+  border: 1px solid #f39800;
+  color: #f39800;
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 5px;
+}
+.tab.active {
+  background: #fff;
+  border: 1px solid #ea5514;
+  font-size: 20px;
+  font-weight: bold;
+  color: #ea5514;
+}
+.tab-content {
+  max-width: 800px;
+  width: 100%;
+  /*krn 本番では消す
+  display: none;
+  */
+}
+.tab-content.active {
+  display: block;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+/*----道後松山のタイトル切り替え---*/
+.ttl_kre{
+  /*　krn 本番では消す
+  display: none;
+  */
+}
+.ttl_kre.atv{
+  display: block;
+}
+/*------共通部分-----*/
+/*------松山・道後以外--*/
+.kjn_box{
+  max-width: 800px;
+  margin: 30px auto;
+}
+/*------店舗紹介css------*/
+.tnp{
+  max-width: 800px;
+  width: 100%;
+  padding-bottom: 15px;
+  margin: 0 auto 50px auto;
+  border: solid 1px #333;
+}
+.tnp_img{
+  width: 100%;
+  text-align: center;
+}
+.tnp_img img{
+  width: 100%;
+}
+.tnp_ttl{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px 0 15px;
+}
+.tnp_ttl h3{
+  font-size: 18px;
+  margin: 5px 0 0 0;
+}
+@media (min-width: 767px){
+  .tnp_ttl h3{
+  font-size: 42px;
+  margin: 5px 0 0 0;
+  }
+}
+.tnp_ttl div{
+  width: 120px;
+}
+.tnp_ttl div img{
+  width: 100%;
+}
+   @media(min-width:425px){
+     .tnp_ttl div{
+       width: 250px;
+   }
+}
+.tnp p{
+  padding-left: 15px;
+} 
+.tnp_ren{
+  display: flex;
+  justify-content: space-around;
+}
+.tnp_ren_tel{
+  border-radius: 20px;
+  background-color: #eb688c;
+  color: #fff;
+  font-size: 16px;
+  padding: 5px 20px;
+}
+.tnp_ren_line{
+  border-radius: 20px;
+  background-color: #00a75b;
+  color: #fff;
+  font-size: 16px;
+  padding: 5px 20px;
+}
+.tnp_ren_mail{
+  border-radius: 20px;
+  background-color: #2ea7e0;
+  color: #fff;
+  font-size: 16px;
+  padding: 5px 20px;
+}
+@media (min-width:767px){
+  .tnp_ren_tel{
+    font-size: 24px;
+    padding: 5px 50px;
+  }
+  .tnp_ren_line{
+    font-size: 24px;
+    padding: 5px 50px;
+  }
+  .tnp_ren_mail{
+    font-size: 24px;
+    padding: 5px 50px;
+  }
+}
+/*----各ページ説明文----*/
+.kjn_text {
+  background-color: #fff;
+  padding: 20px;
+  margin: 30px 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  font-size: 16px;
+  line-height: 1.9;
+  color: #333;
+  border: 2px solid #cc3366;
+}
+.kjn_text h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  line-height: 1.5;
+  color: #cc3366;
+}
+.kjn_text strong {
+  color: #cc3366;
+  font-weight: bold;
+}
+/*----求人トップに戻る-----*/
+.mdr{
+  width: 150px;
+  border: #e64b0e 1px solid;
+  text-align: center;
+  padding: 3px;
+}
+@media (max-width:768px){
+  .mdr{
+  margin: 0 auto;
+}
+}
+.mdr a{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.mdr p{
+  color: #e64b0e;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 1rem auto;
+}
+/*----求人エリアタイトル固定-----*/
+.scroll_fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  font-size: 16px;
+  z-index: 1;
+  padding: 0 !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.scroll_fixed::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 40px; 
+  background-image: url("https://459x.dogo459.com/storage/top/reqruit_top.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #fff;
+}
+@media (max-width: 768px) {
+  .scroll_fixed::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 40px; 
+    background-image: url("https://459x.dogo459.com/storage/top/reqruit_top.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #fff;
+  }
+}
+/*----求人画像ポップアップ----*/
+.recruit-popup {
+  position: fixed;
+  bottom: -300px; /* 初期は画面外 */
+  right: 20px;
+  width: 180px;
+  transition: bottom 0.5s ease-in-out;
+  z-index: 9999;
+}
+.recruit-popup.show {
+  bottom: 75px; /* 表示位置 */
+}
+.recruit-popup img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+@media (max-width:768px){
+  .recruit-popup {
+  position: fixed;
+  bottom: -300px; /* 初期は画面外 */
+  right: 0px;
+  width: 100px;
+  transition: bottom 0.5s ease-in-out;
+  z-index: 9999;
+}
+}
+/*---krn 求人松山エリア 動くタブ ---*/
+.shake-button {
+  animation: cute-shake 2s infinite;
+}
+@keyframes cute-shake {
+0% {
+        transform: scale(1, 0.8);
+    }
+    20% {
+        transform: scale(0.8, 1.1);
+    }
+    95% {
+        transform: scale(1, 1);
+    }
+    100% {
+        transform: scale(1, 0.8);
+    }
+}
+/*---求人トップ　光ボタン---*/
+.shine_button {
+  z-index: 0;
+  overflow: hidden;
+}
+
+.shine_button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg);
+  z-index: -1;
+  animation: shineLoop 1.7s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes shineLoop {
+  0% {
+    left: -75%;
+  }
+  100% {
+    left: 125%;
+  }
+}
+/*----男子求人バナー----*/
+.kjn_contact {
+  max-width: 800px;
+  margin: 40px auto 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  text-align: center;
+}
+.kjn_contact h2 {
+  font-size: 19px;
+  color: #333;
+  margin-bottom: 15px;
+}
+.kjn_contact p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
+}
+.kjn_contact a {
+  text-decoration: none;
+}
+.kjn_contact img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 8px;
+}
+.kjn_contact span{
+  color:red;
+  font-weight: bold;
+}
+/*----求人ページエリアボタン固定2025_7_5 krn----*/
+.ala.fixed-bottom {
+  position: fixed;
+  bottom: -24px;
+  left: 0;
+  width: 100%;
+  background-color: rgba(85, 83, 83, 0.8);
+  z-index: 999;
+  padding: 5px 0;
+}
+
+/* 固定時は h2 を非表示にする */
+.ala.fixed-bottom h2 {
+  display: none;
+}
+
+/* 非表示状態 */
+.ala.hidden {
+  display: none;
+}
+@media (min-width: 768px) {
+  .ala.fixed-bottom {
+    display: none;
+  
+}
+
+/* 固定時は h2 を非表示にする */
+.ala.fixed-bottom h2 {
+  display: none;
+}
+
+}
+/* かぶきページ目次追加 2025_7_11 krn */
+.page-intro {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 2em;
+  font-family: "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.page-title {
+  font-size: 1.4em;
+  font-weight: 600;
+  border-left: 6px solid #c49a6c;
+  color: #3b3b3b;
+  margin-bottom: 0.8em;
+}
+.toc {
+  width: 80%;
+  margin: 0 auto;
+}
+.toc h2 {
+  font-size: 1.1em;
+  width: 100%;
+  color: #7a5c36;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.3em;
+  margin-bottom: 0.5em;
+  margin: 50px 0;
+}
+
+.toc ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  display: block; /* レイアウトでflex効いてる　ここで縦並びを強制 */
+}
+
+.toc ul li {
+  margin-bottom: 0.6em;
+  position: relative;
+  padding-left: 1.2em;
+}
+
+.toc ul li::before {
+  content: "•";
+  color: #c49a6c;
+  font-size: 1.2em;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.toc ul li a {
+  text-decoration: none;
+  color: #333;
+  transition: color 0.3s;
+}
+
+.toc ul li a:hover {
+  color: #c49a6c;
+}

@@ -1,0 +1,40 @@
+.fixed-scroll-area {
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  width: 50%;
+}
+.fixed-area {
+  position: fixed;
+  z-index: 100;
+  bottom: 0;
+  width: 100%;
+}
+.fixed-two-area {
+  display: flex;
+  position: fixed;
+  z-index: 100;
+  bottom: 0;
+  width: 100%;
+  left: 30%;
+}
+.fixed-btn{
+  width:80%;
+}
+.fixed-two-btn {
+  width:30%;
+}
+.fixed-other-area {
+  display: flex;
+  position: fixed;
+  z-index: 100;
+  bottom: 0;
+  width: 100%;
+  left: 65%;
+}
+.blue-eye {
+  color: #007bff;
+}
+.gray-eye {
+  color: gray;
+}

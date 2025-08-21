@@ -1,0 +1,186 @@
+#overlay{ 
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  height:100%;
+  display: none;
+  background: rgba(0,0,0,0.6);
+}
+.cv-spinner {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+}
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px #ddd solid;
+  border-top: 4px #2e93e6 solid;
+  border-radius: 50%;
+  animation: sp-anime 0.8s infinite linear;
+}
+@keyframes sp-anime {
+  100% { 
+      transform: rotate(360deg); 
+  }
+}
+.is-hide{
+  display:none;
+}
+.mypage_menu_content {
+  border-bottom: 2px solid #D5D5D5;
+}
+.tab_acive {
+  background-color: #016DB7;
+  color: white;
+}
+.mypage_menu_bar {
+  border-left: 1px solid #D5D5D5;
+}
+.mypage_menu_bar_end {
+  border-right: 1px solid #D5D5D5;
+  border-left: 1px solid #D5D5D5;
+}
+.card_content {
+  height: 350px;
+  border-radius: 15px !important;
+}
+.point_card{
+  font-weight: bold;
+  color: white;
+  background-color: #EA5514;
+  border-radius:  15px 15px 0 0 !important;
+}
+.point_btn {
+  color: white;
+  background-color: #EA5514;
+  width: 60%;
+}
+.favorite_card{
+  font-weight: bold;
+  color: white;
+  background-color: #E51374;
+  border-radius:  15px 15px 0 0 !important;
+}
+.favorite_btn {
+  color: white;
+  background-color: #E51374;
+  width: 60%;
+}
+.favorite_shop_card{
+  font-weight: bold;
+  color: white;
+  background-color: #cc0000;
+  border-radius:  15px 15px 0 0 !important;
+}
+.favorite_shop_btn {
+  color: white;
+  background-color: #cc0000;
+  width: 60%;
+}
+.history_card{
+  font-weight: bold;
+  color: white;
+  background-color: #7D308E;
+  border-radius:  15px 15px 0 0 !important;
+}
+.history_btn {
+  color: white;
+  background-color: #7D308E;
+  width: 60%;
+}
+.favorite_img {
+  align-items: center;
+  height: 12rem;
+  max-width: 100%;
+  object-fit: contain;
+}
+.fuzoku_text {
+  color: #F1747E;
+}
+.list_content {  
+  /* display: flex; */
+  list-style: none;
+  padding: 10px 0px;
+  border-bottom:1px solid #d3d3d3 !important;;
+}
+.list_title {
+  color:inherit;
+  text-decoration: none;
+}
+
+.mypage_pc {
+  display: flex;
+}
+.mypage_sp {
+  display: none;
+}
+
+/* 星の実装 */
+.star-rating {
+  display: flex;
+  font-size: 1.2rem;
+}
+.star-rating-text {
+  font-size: 1.2rem;
+}
+.star {
+  position: relative;
+  display: inline-block;
+  color: #ddd;
+}
+.star::before {
+  content: '★';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  color: #ffc700;
+  overflow: hidden;
+}
+.star.width-0::before {
+  width: 0%; /* Adjust this value to represent the partial fill (e.g., 80% for 4.8 rating) */
+}
+.star.width-10::before {
+  width: 10%; /* Adjust this value to represent the partial fill (e.g., 80% for 4.8 rating) */
+}
+.star.width-20::before {
+  width: 20%; /* Adjust this value to represent the partial fill (e.g., 80% for 4.8 rating) */
+}
+.star.width-30::before {
+  width: 30%; /* Adjust this value to represent the partial fill (e.g., 80% for 4.8 rating) */
+}
+.star.width-40::before {
+  width: 40%; /* Adjust this value to represent the partial fill (e.g., 80% for 4.8 rating) */
+}
+.star.width-50::before {
+  width: 50%; /* Adjust this value to represent the partial fill (e.g., 80% for 4.8 rating) */
+}
+.star.width-60::before {
+  width: 60%; /* Adjust this value to represent the partial fill (e.g., 80% for 4.8 rating) */
+}
+.star.width-70::before {
+  width: 70%; /* Adjust this value to represent the partial fill (e.g., 80% for 4.8 rating) */
+}
+.star.width-80::before {
+  width: 80%; /* Adjust this value to represent the partial fill (e.g., 80% for 4.8 rating) */
+}
+.star.width-90::before {
+  width: 90%; /* Adjust this value to represent the partial fill (e.g., 80% for 4.8 rating) */
+}
+/* スマートフォンサイズ時のメディアクエリ */
+@media (max-width: 1400px) {
+  
+}
+/* スマートフォンサイズ時のメディアクエリ */
+@media (max-width: 768px) {
+  .mypage_pc {
+    display: none;
+  }
+  .mypage_sp {
+    display: initial;
+  }
+}
