@@ -34,6 +34,7 @@
                   </div>
                   <nav class="menu" id="menu">
                       <span class="close-btn" id="closebtn">&times;</span>
+                      <a href="#">トップ</a>
                       <a href="#">松山</a>
                       <a href="#">新居浜</a>
                       <a href="#">四国中央</a>
@@ -174,7 +175,7 @@
       </section>
      
    </main>
-
+{!! $js_tag !!}
 
 
 <?php
