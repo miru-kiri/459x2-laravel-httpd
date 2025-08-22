@@ -70,9 +70,6 @@
          @endforeach
             @foreach($sites as $sid => $sary)
             <div class="est_tenp">
-               <div class="est_tenp_info">
-                  <p>{{ $sary['content'] }}</p>
-               </div>
                <div class="est_tenp_name">
                   <div class="est_tenp_name_img">
                      <a href="./{{ $path_area }}/{{$def_mens_ary['memo']['site_url_prefix']}}{{$sid}}">
@@ -91,6 +88,9 @@
                         <p>{{ $shops[ $sary['shop_id'] ]['opening_text'] }}</p>
                      </a>
                   </div>
+               </div>
+               <div class="est_tenp_info">
+                  <p>{{ $sary['content'] }}</p>
                </div>
                <!--表示試験で入力していたもの。　不要のため近々削除予定
                <div class="est_tenp_cast">

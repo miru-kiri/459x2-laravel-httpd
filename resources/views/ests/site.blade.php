@@ -9,8 +9,46 @@
 {!! $css_tag !!}
    </head>
    <body>
+      <header>
+         <section>
+            <div class="head">
+               <div class="head_img">
+                  <img src="{{ asset('img/mens_est_logo.png') }}" alt="メンズエステランドのロゴ" class="logo_img">
+               </div>
+               <div class="head_pc">
+                  <button class="btn menu-button rounded-0 sign_btn" style="background: #EE5318">
+                     <i class="fas fa-home" style="color: #ffffff"></i> <!-- Font Awesomeのアイコン 天国ネットからそのままもってきた　以下同文 -->
+                     <p class="text-white menu-text">会員登録</p>
+                  </button>
+                  <button class="btn menu-button rounded-0 login_btn" style="background: #EC1070">
+                     <i class="fas fa-sign-in-alt" style="color: #ffffff"></i> <!-- Font Awesomeのアイコン -->
+                     <p class="text-white menu-text">ログイン</p>
+                  </button>
+                  <button class="btn menu-button rounded-0 contact_btn" style="background: #BF0D28">
+                     <i class="fas fa-envelope" style="color: #ffffff"></i> <!-- Font Awesomeのアイコン -->
+                     <p class="text-white menu-text">お問い合わせ</p>
+                  </button>
+               </div>
+               <div class="head_sp">
+                  <div class="hamburger" id="hamburger">
+                     <div class="bar"></div>
+                     <div class="bar"></div>
+                     <div class="bar"></div>
+                  </div>
+                  <nav class="menu" id="menu">
+                      <span class="close-btn" id="closebtn">&times;</span>
+                      <a href="#">松山</a>
+                      <a href="#">新居浜</a>
+                      <a href="#">四国中央</a>
+                      <a href="#">会員登録</a>
+                      <a href="#">ログイン</a>
+                      <a href="#">お問い合わせ</a>
+                  </nav>
+               </div>
+            </div>
+         </section>
+      </header>
       <div><span><a href="{{ config('app.url') }}">他の地域</a></span><span><a href="{{ config('app.url') }}/{{ $url_area }}">近隣店舗</a></span></div>
-      <header></header>
       <main>
          <section>
             <div class="shop_img">
