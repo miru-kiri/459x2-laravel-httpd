@@ -14,7 +14,7 @@
       <main>
          <section>
             <div class="shop_img">
-               <img src="{{asset('img/site/site_top_site_id_'.$site_id.'.jpg')}}">
+               <img src="{{asset('img/site/site_top_site_id_'.$site_id.'.png')}}">
             </div>
             <div class="shop_tag">
             @foreach($m_tab as $tno => $tary)
