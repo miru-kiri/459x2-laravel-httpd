@@ -533,3 +533,24 @@ img{
   color: white;
   cursor: pointer;
 }
+/*--タブのスクロールクラス　試験的--*/
+.scroll-container {
+  display: flex;
+  overflow-x: auto;   /* 横スクロールON */
+  white-space: nowrap;
+  padding: 10px;
+  gap: 10px;          /* aタグの間隔 */
+  scrollbar-width: none; /* Firefoxでスクロールバー非表示 */
+  flex-wrap: unset;
+}
+.scroll-container a {
+  flex: 0 0 auto;     /* 折り返さず横並び */
+  display: inline-block;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+}
+.scroll-container a:hover {
+  background: #555;
+}

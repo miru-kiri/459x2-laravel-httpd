@@ -54,7 +54,7 @@
             <div class="shop_img">
                <img src="{{asset('img/site/site_top_site_id_'.$site_id.'.png')}}">
             </div>
-            <div class="shop_tag">
+            <div class="shop_tag scroll-container">
             @foreach($m_tab as $tno => $tary)
                <a href="{{ config('app.url') }}/{{ $url_area }}/{{ config('EstheSite.memo.site_url_prefix') }}{{ $site_id }}/{{ config('EstheSite.tab.'.$tary['master_id'].'') }}">
                   <span>{{ $tary['name'] }}</span>
