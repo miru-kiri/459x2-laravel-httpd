@@ -250,6 +250,20 @@ img{
 .est_tenp_name_text p{
     color:#231815
 }
+@media(max-width:426px){
+    .est_tenp_name{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    }
+    .est_tenp_name_img{
+        width: 100%;
+    }
+    .est_tenp_name_img img{
+        width: 100%;
+    }
+}
 .est_tenp_cast {
   display: inline-flex;        /* 横並びにして高さは中身に合わせる */
   overflow-x: auto;            /* 横スクロールのみ許可 */
