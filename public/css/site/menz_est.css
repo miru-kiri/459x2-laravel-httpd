@@ -301,7 +301,6 @@ img{
 }
 .shop_img img{
     width: 100%;
-    max-width: 250px;
 }
 .shop_tag{
     width: 100%;
@@ -450,11 +449,13 @@ img{
 /*--今更だけど、ヘッダー部分　ハンバーガーメニューとか--*/
 .head{
     display: flex;
+    justify-content: space-between;
 }
-
+.head_img img{
+    width: 100%;
+}
 .head_pc{
     display: block;
-
 }
 .head_sp{
     display: none;
@@ -470,7 +471,7 @@ img{
 /* ハンバーガーボタン */
 .hamburger {
   position: fixed;
-  top: 15px;
+  top: 25px;
   right: 15px;
   z-index: 1001;
   cursor: pointer;
