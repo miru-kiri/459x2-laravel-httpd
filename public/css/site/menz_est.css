@@ -540,7 +540,6 @@ img{
   white-space: nowrap;
   padding: 10px;
   gap: 10px;          /* aタグの間隔 */
-  scrollbar-width: none; /* Firefoxでスクロールバー非表示 */
   flex-wrap: unset;
 }
 .scroll-container a {
