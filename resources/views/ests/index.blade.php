@@ -9,11 +9,13 @@
    </head>
    <body>
       <header>
-         <div>
+         <section>
             <div>
-               <img scr="{{ asset('img/mens_est_logo.png') }}" alt="メンズエステランドのロゴ" class="logo_img">
+               <div>
+                  <img src="{{ asset('img/mens_est_logo.png') }}" alt="メンズエステランドのロゴ" class="logo_img">
+               </div>
             </div>
-         </div>
+         </section>
       </header>
       <div class="kirino">テスト！おおお</div>
       <section>
