@@ -14,6 +14,20 @@
                <div>
                   <img src="{{ asset('img/mens_est_logo.png') }}" alt="メンズエステランドのロゴ" class="logo_img">
                </div>
+               <div>
+                  <button class="btn menu-button rounded-0 sign_btn" style="background: #EE5318">
+                     <i class="fas fa-home" style="color: #ffffff"></i> <!-- Font Awesomeのアイコン 天国ネットからそのままもってきた　以下同文 -->
+                     <p class="text-white menu-text">会員登録</p>
+                  </button>
+                  <button class="btn menu-button rounded-0 login_btn" style="background: #EC1070">
+                     <i class="fas fa-sign-in-alt" style="color: #ffffff"></i> <!-- Font Awesomeのアイコン -->
+                     <p class="text-white menu-text">ログイン</p>
+                  </button>
+                  <button class="btn menu-button rounded-0 contact_btn" style="background: #BF0D28">
+                     <i class="fas fa-envelope" style="color: #ffffff"></i> <!-- Font Awesomeのアイコン -->
+                     <p class="text-white menu-text">お問い合わせ</p>
+                  </button>
+               </div>
             </div>
          </section>
       </header>
