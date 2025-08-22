@@ -52,7 +52,7 @@
          <div class="est_top">
             <img src="{{ asset('img/esthe_top_image.jpg') }}" alt="メンズエステランドトップ画像" class="top-img">
          </div>
-         <h1 class="est_top_ttl">デザインにｈ１入れるとこないから要相談</h1>
+         <h1 class="est_top_ttl">メンズエステランド｜メンズエステを探すならここから</h1>
       </section>
       <section>
          <div class="est_search">
